@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.lzk.mapper.SafeTypeMapper">
+    <insert id="addSafeType" parameterType="com.lzk.entity.SafeType">
+        insert into safeType values(#{id}, #{type}, #{content}, #{mark})
+    </insert>
+
+    <select id="findSafeType" parameterType="com.lzk.entity.SafeType" resultType="com.lzk.entity.SafeType">
+        select * from safeType
+        <where>
+            <if test="id!=null">
+                id = #{id}
+            </if>
+            <if test="type!=null">
+                and type = #{type}
+            </if>
+        </where>
+    </select>
+</mapper>

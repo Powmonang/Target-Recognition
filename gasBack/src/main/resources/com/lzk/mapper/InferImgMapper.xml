@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.lzk.mapper.InferImgMapper">
+
+    <insert id="addInfer" parameterType="com.lzk.entity.InferImg">
+        insert into InferImg(oper, imgId, safeType, keyTime, indexUrl, reportId)
+        values(#{oper}, #{imgId}, #{safeType}, #{keyTime}, #{indexUrl}, #{reportId})
+    </insert>
+    <update id="changeInfer" parameterType="com.lzk.entity.InferImg">
+        update inferimg <set>
+        <if test="indexUrl!=null">
+            indexUrl = #{indexUrl},
+        </if>
+        <if test="keyTime!=null">
+            keyTime = #{keyTime}
+        </if>
+    </set>
+        <where>
+            oper = #{oper} and imgId = #{imgId} and safeType = #{safeType}
+        </where>
+    </update>
+    <select id="findInfers" parameterType="com.lzk.entity.InferImg" resultType="com.lzk.entity.InferImg">
+        select * from inferimg
+        <where>
+            <if test="id!=null">
+                id = #{id}
+            </if>
+            <if test="oper!=null">
+                and oper = #{oper}
+            </if>
+            <if test="imgId!=null">
+                and imgId = #{imgId}
+            </if>
+            <if test="safeType!=null">
+                and safeType = #{safeType}
+            </if>
+            <if test="keyTime!=null">
+                and Date(keyTime) = #{keyTime}
+            </if>
+            <if test="start!=null and end != null">
+                and keyTime BETWEEN #{start} AND #{end}
+            </if>
+            <if test="level!=null">
+                and level = #{level}
+            </if>
+        </where>
+    </select>
+    <select id="findReportIdDistinctPage" resultType="com.lzk.entity.InferImg">
+        Select distinct reportId from inferimg
+        <where>
+            <if test="a.oper!=null">
+                    and oper = #{a.oper}
+            </if>
+            <if test="a.imgId!=null">
+                    and imgId = #{a.imgId}
+            </if>
+            <if test="a.safeType!=null">
+                    and safeType = #{a.safeType}
+            </if>
+            <if test="a.start!=null and a.end != null">
+                    and keyTime BETWEEN #{a.start} AND #{a.end}
+            </if>
+        </where>
+    </select>
+</mapper>

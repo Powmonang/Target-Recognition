@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.lzk.mapper.UserMapper">
+    <insert id="addUser" parameterType="com.lzk.entity.User">
+        INSERT INTO USERS VALUES(#{id}, #{ps}, #{type}, #{name}, #{sex}, #{phe}, #{finalLogin})
+    </insert>
+    <update id="changeUser" parameterType="com.lzk.entity.User">
+        UPDATE USERS <set>
+        <if test="ps!=null">
+            ps = #{ps},
+        </if>
+        <if test="phe!=null">
+            phe = #{phe},
+        </if>
+        <if test="name!=null">
+            name = #{name},
+        </if>
+        <if test="sex!=null">
+            sex = #{sex},
+        </if>
+        <if test="finalLogin!=null">
+            FINALLOGIN = #{finalLogin}
+        </if>
+        </set>
+        WHERE ID = #{id};
+    </update>
+
+    <select id="findUsers" parameterType="com.lzk.entity.User" resultType="com.lzk.entity.User">
+        select * from users
+        <where>
+            <if test="id!=null">
+                id = #{id}
+            </if>
+            <if test="ps!=null">
+                and ps = #{ps}
+            </if>
+            <if test="sex!=null">
+                and sex = #{sex}
+            </if>
+            <if test="finalLogin!=null">
+                and Date(finalLogin) = #{finalLogin}
+            </if>
+            <if test="name!=null">
+                and name = #{name}
+            </if>
+        </where>
+    </select>
+</mapper>

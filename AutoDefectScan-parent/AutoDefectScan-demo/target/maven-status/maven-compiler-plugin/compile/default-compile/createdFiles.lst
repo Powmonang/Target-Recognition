@@ -1,0 +1,4 @@
+com\defectscan\AutoDefectScanDemoApplication.class
+com\defectscan\config\WebMvcConfiguration.class
+com\defectscan\controller\ImageController.class
+com\defectscan\config\OssConfiguration.class

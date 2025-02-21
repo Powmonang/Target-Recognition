@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.lzk.mapper.ImgTypeMapper">
+    <insert id="addImgType" parameterType="com.lzk.entity.ImgType">
+        insert into imgType values(#{id}, #{type}, #{content}, #{mark})
+    </insert>
+
+
+    <select id="findImgType" parameterType="com.lzk.entity.ImgType" resultType="com.lzk.entity.ImgType">
+        select * from imgType
+        <where>
+            <if test="id!=null">
+                id = #{id}
+            </if>
+            <if test="type!=null">
+                and type = #{type}
+            </if>
+        </where>
+    </select>
+</mapper>

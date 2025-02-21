@@ -1,0 +1,38 @@
+server:
+  address: 0.0.0.0
+  port: 8080
+
+
+spring:
+  profiles:
+    active: dev
+  main:
+    allow-circular-references: true
+  #数据库连接信息
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://localhost:3306/autodefectscan
+    username: root123
+    password: 123456
+
+    #文件上传配置
+  servlet:
+    multipart:
+      max-request-size: 100MB
+      max-file-size: 10MB
+
+#Mybatis配置
+mybatis:
+  configuration:
+    map-underscore-to-camel-case: true
+    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
+
+#阿里云OSS
+aliyun:
+  oss:
+    endpoint: https://oss-cn-beijing.aliyuncs.com
+    accessKeyId: LTAI5tKMqMCizzE3t6imnZKZ
+    accessKeySecret: lZO92qFCWXvhWXw6o7D6yDDWHtlbFF
+    bucketName: autodefectscan-demo
+
+

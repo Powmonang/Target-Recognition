@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.lzk.mapper.ModelMapper">
+    <insert id="addModel" parameterType="com.lzk.entity.Model">
+        insert into Models(name, type, keyTime, mark) values(#{name}, #{type}, #{keyTime}, #{mark})
+    </insert>
+
+    <select id="findModels" parameterType="com.lzk.entity.Model" resultType="com.lzk.entity.Model">
+        select * from Models
+        <where>
+            <if test="id!=null">
+                id = #{id}
+            </if>
+            <if test="type!=null">
+                and type = #{type}
+            </if>
+        </where>
+    </select>
+</mapper>

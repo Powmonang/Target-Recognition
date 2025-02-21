@@ -1,0 +1,3 @@
+com\defectscan\properties\AliOssProperties.class
+com\defectscan\result\Result.class
+com\defectscan\utils\AliOssUtil.class

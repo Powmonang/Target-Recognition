@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.lzk.mapper.WarnImgsMapper">
+    <insert id="addWarnImgs" parameterType="com.lzk.entity.WarnImgs">
+        Insert into warnImgs(oper, imgId, warnType, keyTime)
+        values(#{oper}, #{imgId}, #{warnType}, #{keyTime})
+    </insert>
+    <delete id="delWarnImgs" parameterType="com.lzk.entity.WarnImgs">
+        DELETE FROM warnImgs
+        <where>
+            <if test="id != null">
+                    id = #{id}
+            </if>
+            <if test="oper!=null">
+                    and oper = #{oper}
+            </if>
+            <if test="imgId!=null">
+                    and imgId = #{imgId}
+            </if>
+            <if test="warnType!=null">
+                    and warnType = #{warnType}
+            </if>
+        </where>
+    </delete>
+
+    <select id="findWarnImgs" parameterType="com.lzk.entity.WarnImgs" resultType="com.lzk.entity.WarnImgs">
+        SELECT * FROM warnImgs
+        <where>
+            <if test="id != null">
+                    id = #{id}
+            </if>
+            <if test="oper!=null">
+                    and oper = #{oper}
+            </if>
+            <if test="imgId!=null">
+                    and imgId = #{imgId}
+            </if>
+            <if test="warnType!=null">
+                    and warnType = #{warnType}
+            </if>
+        </where>
+    </select>
+</mapper>

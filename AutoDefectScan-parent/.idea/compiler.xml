@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="CompilerConfiguration">
+    <annotationProcessing>
+      <profile default="true" name="Default" enabled="true" />
+      <profile name="Annotation profile for AutoDefectScan-parent" enabled="true">
+        <sourceOutputDir name="target/generated-sources/annotations" />
+        <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
+        <outputRelativeToContentRoot value="true" />
+        <processorPath>
+          <entry name="$PROJECT_DIR$/../../../develop/apache-maven-3.6.1/mvn_repo/org/projectlombok/lombok/unknown/lombok-unknown.jar" />
+        </processorPath>
+        <module name="AutoDefectScan-common" />
+        <module name="AutoDefectScan-demo" />
+        <module name="AutoDefectScan-pojo" />
+      </profile>
+    </annotationProcessing>
+  </component>
+  <component name="JavacSettings">
+    <option name="ADDITIONAL_OPTIONS_OVERRIDE">
+      <module name="AutoDefectScan-common" options="-parameters" />
+      <module name="AutoDefectScan-demo" options="-parameters" />
+      <module name="AutoDefectScan-parent" options="" />
+      <module name="AutoDefectScan-pojo" options="-parameters" />
+    </option>
+  </component>
+</project>
