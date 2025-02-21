@@ -13,8 +13,8 @@ import java.util.UUID;
 
 
 @RestController
-@CrossOrigin(origins = "http://120.24.30.217:8080")
 @RequestMapping("/api/images")
+@CrossOrigin("*") // 允许跨域
 @Api(tags = "用户上传图片接口")
 @Slf4j
 public class ImageController {
@@ -27,8 +27,8 @@ public class ImageController {
 
 
     // 图片上传接口(本地存储)
+
     /**
-     *
      * @param image
      * @return
      */
@@ -64,14 +64,6 @@ public class ImageController {
         }
     }
 
-//    // 获取上传图片（示例）
-//    @GetMapping("/{imageName}")
-//    public ResponseEntity<byte[]> getImage(@PathVariable String imageName) throws IOException {
-//        Path imagePath = Paths.get(IMAGE_UPLOAD_DIR + imageName);
-//        if (Files.exists(imagePath)) {
-//            byte[] imageBytes = Files.readAllBytes(imagePath);
-//            return ResponseEntity.ok(imageBytes);
-//        }
-//        return ResponseEntity.notFound().build();
-//    }
+
+
 }

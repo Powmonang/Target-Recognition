@@ -5,19 +5,26 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="251723c6-774f-4618-b88f-51cf430d0158" name="更改" comment="1">
-      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/AutoDefectScan-common/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/AutoDefectScan-common/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/AutoDefectScan-demo/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/AutoDefectScan-demo/pom.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../gasBack/.idea/vcs.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/AutoDefectScan-demo/src/main/java/com/defectscan/config/WebMvcConfiguration.java" beforeDir="false" afterPath="$PROJECT_DIR$/AutoDefectScan-demo/src/main/java/com/defectscan/config/WebMvcConfiguration.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/AutoDefectScan-demo/src/main/java/com/defectscan/controller/ImageController.java" beforeDir="false" afterPath="$PROJECT_DIR$/AutoDefectScan-demo/src/main/java/com/defectscan/controller/ImageController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/AutoDefectScan-demo/src/main/resources/application-dev.yml" beforeDir="false" afterPath="$PROJECT_DIR$/AutoDefectScan-demo/src/main/resources/application-dev.yml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/AutoDefectScan-demo/src/main/resources/application.yml" beforeDir="false" afterPath="$PROJECT_DIR$/AutoDefectScan-demo/src/main/resources/application.yml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/AutoDefectScan-pojo/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/AutoDefectScan-pojo/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/AutoDefectScan-demo/target/classes/com/defectscan/config/WebMvcConfiguration.class" beforeDir="false" afterPath="$PROJECT_DIR$/AutoDefectScan-demo/target/classes/com/defectscan/config/WebMvcConfiguration.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/AutoDefectScan-demo/target/classes/com/defectscan/controller/ImageController.class" beforeDir="false" afterPath="$PROJECT_DIR$/AutoDefectScan-demo/target/classes/com/defectscan/controller/ImageController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../gasBack/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../gasBack/.idea/misc.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Class" />
+      </list>
+    </option>
   </component>
   <component name="Git.Settings">
     <option name="RECENT_BRANCH_BY_REPOSITORY">
@@ -25,7 +32,7 @@
         <entry key="$PROJECT_DIR$" value="cu" />
       </map>
     </option>
-    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
   </component>
   <component name="MavenImportPreferences">
     <option name="generalSettings">
@@ -42,6 +49,9 @@
   &quot;associatedIndex&quot;: 3
 }</component>
   <component name="ProjectId" id="2tFXabQbx8RDfTG700ksnYb5BT2" />
+  <component name="ProjectLevelVcsManager">
+    <ConfirmationsSetting value="1" id="Add" />
+  </component>
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
@@ -68,7 +78,7 @@
     "git-widget-placeholder": "master",
     "jdk.selected.JAVA_MODULE": "17",
     "kotlin-language-version-configured": "true",
-    "last_opened_file_path": "D:/user/code/fuchuang/AutoDefectScan-parent/AutoDefectScan-common/src/main/resources",
+    "last_opened_file_path": "D:/user/code/fuchuang/gasBack",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
@@ -171,7 +181,7 @@
       <workItem from="1739948867539" duration="2512000" />
       <workItem from="1739960350722" duration="10291000" />
       <workItem from="1739970673941" duration="7905000" />
-      <workItem from="1740039501204" duration="13299000" />
+      <workItem from="1740039501204" duration="22898000" />
     </task>
     <task id="LOCAL-00001" summary="1">
       <option name="closed" value="true" />
