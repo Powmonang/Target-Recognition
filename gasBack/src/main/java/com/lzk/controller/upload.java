@@ -77,6 +77,7 @@ public class upload {
         request.setUploadTime(LocalDateTime.now().toString());
         logger.info(request.toString());
         String imgTempUrl = request.getUrl();
+        // 将一个指向本地开发服务器（localhost:8080）上的上传路径的 URL 替换成一个新的路径或目录（tempDir）
         //TODO 上传的端口要注意
         imgTempUrl = imgTempUrl.replace("http://localhost:8080/uploadReturn/", tempDir);
         String destinationFile = imgTempUrl.replace("temp", "imgs"); // 目标文件绝对路径

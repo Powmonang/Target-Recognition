@@ -12,7 +12,7 @@ spring:
   datasource:
     driver-class-name: com.mysql.cj.jdbc.Driver
     url: jdbc:mysql://localhost:3306/autodefectscan
-    username: root123
+    username: root
     password: 123456
 
     #文件上传配置
@@ -20,6 +20,7 @@ spring:
     multipart:
       max-request-size: 100MB
       max-file-size: 10MB
+      enabled: true
 
 #Mybatis配置
 mybatis:
@@ -34,5 +35,12 @@ aliyun:
     accessKeyId: LTAI5tKMqMCizzE3t6imnZKZ
     accessKeySecret: lZO92qFCWXvhWXw6o7D6yDDWHtlbFF
     bucketName: autodefectscan-demo
+
+#图片上传地址：
+controller:
+  img:
+    tempDir: temp
+    targetDir: imgs
+
 
 

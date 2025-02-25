@@ -5,14 +5,16 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="251723c6-774f-4618-b88f-51cf430d0158" name="更改" comment="1">
-      <change afterPath="$PROJECT_DIR$/../gasBack/.idea/vcs.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/compiler.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/AutoDefectScan-demo/src/main/java/com/defectscan/config/WebMvcConfiguration.java" beforeDir="false" afterPath="$PROJECT_DIR$/AutoDefectScan-demo/src/main/java/com/defectscan/config/WebMvcConfiguration.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/AutoDefectScan-demo/src/main/java/com/defectscan/controller/ImageController.java" beforeDir="false" afterPath="$PROJECT_DIR$/AutoDefectScan-demo/src/main/java/com/defectscan/controller/ImageController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/AutoDefectScan-demo/target/classes/com/defectscan/config/WebMvcConfiguration.class" beforeDir="false" afterPath="$PROJECT_DIR$/AutoDefectScan-demo/target/classes/com/defectscan/config/WebMvcConfiguration.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/AutoDefectScan-demo/target/classes/com/defectscan/controller/ImageController.class" beforeDir="false" afterPath="$PROJECT_DIR$/AutoDefectScan-demo/target/classes/com/defectscan/controller/ImageController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../gasBack/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../gasBack/.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/AutoDefectScan-common/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/AutoDefectScan-common/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/AutoDefectScan-demo/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/AutoDefectScan-demo/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/AutoDefectScan-demo/src/main/java/com/defectscan/controller/ImageController.java" beforeDir="false" afterPath="$PROJECT_DIR$/AutoDefectScan-demo/src/main/java/com/defectscan/controller/img/uploadController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/AutoDefectScan-demo/src/main/resources/application.yml" beforeDir="false" afterPath="$PROJECT_DIR$/AutoDefectScan-demo/src/main/resources/application.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/AutoDefectScan-demo/target/classes/application.yml" beforeDir="false" afterPath="$PROJECT_DIR$/AutoDefectScan-demo/target/classes/application.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/AutoDefectScan-demo/target/classes/com/defectscan/controller/ImageController.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../gasBack/src/main/java/com/lzk/controller/upload.java" beforeDir="false" afterPath="$PROJECT_DIR$/../gasBack/src/main/java/com/lzk/controller/upload.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -78,7 +80,7 @@
     "git-widget-placeholder": "master",
     "jdk.selected.JAVA_MODULE": "17",
     "kotlin-language-version-configured": "true",
-    "last_opened_file_path": "D:/user/code/fuchuang/gasBack",
+    "last_opened_file_path": "D:/user/code/fuchuang/AutoDefectScan-parent/AutoDefectScan-demo/src/main/resources/mapper",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
@@ -96,27 +98,31 @@
       "directory"
     ],
     "DatabaseDriversLRU": [
-      "mysql"
+      "mysql",
+      "cassandra"
     ]
   }
 }]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
-      <recent name="D:\user\code\fuchuang\AutoDefectScan-parent\AutoDefectScan-common\src\main\resources" />
-      <recent name="D:\user\code\fuchuang\AutoDefectScan-parent\AutoDefectScan-demo\src\main\java\com\defectscan" />
-      <recent name="D:\user\code\fuchuang\AutoDefectScan-parent\AutoDefectScan-demo\src\main\resources" />
-      <recent name="D:\user\code\fuchuang\AutoDefectScan-parent\AutoDefectScan-pojo\src\main\java\com\defectscan" />
+      <recent name="D:\user\code\fuchuang\AutoDefectScan-parent\AutoDefectScan-demo\src\main\resources\mapper" />
       <recent name="D:\user\code\fuchuang\AutoDefectScan-parent\AutoDefectScan-common\src\main\java\com\defectscan" />
+      <recent name="D:\user\code\fuchuang\AutoDefectScan-parent\AutoDefectScan-demo\src\main\java\com\defectscan\mapper" />
+      <recent name="D:\user\code\fuchuang\AutoDefectScan-parent\AutoDefectScan-pojo\src\main\java\com\defectscan" />
+      <recent name="D:\user\code\fuchuang\AutoDefectScan-parent\AutoDefectScan-demo\src\main\java\com\defectscan" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="D:\user\code\fuchuang\AutoDefectScan-parent\AutoDefectScan-demo\src\main\resources\com\defectscan\mapper" />
       <recent name="D:\user\code\fuchuang\AutoDefectScan-parent\AutoDefectScan-demo\src\main\resources" />
       <recent name="D:\user\code\fuchuang\AutoDefectScan-parent\AutoDefectScan-common\src\main\java\com\defectscan\properties" />
       <recent name="D:\user\code\fuchuang\AutoDefectScan-parent\AutoDefectScan-common\src\main\java\com\defectscan\utils" />
     </key>
     <key name="CopyClassDialog.RECENTS_KEY">
-      <recent name="com.defectscan.config" />
-      <recent name="com.defectscan.properties" />
-      <recent name="com.defectscan.utils" />
+      <recent name="com.defectscan.dto" />
+      <recent name="com.defectscan.mapper" />
+      <recent name="com.defectscan.service.impl" />
+      <recent name="com.defectscan.service" />
+      <recent name="com.defectscan.entity" />
     </key>
   </component>
   <component name="RunManager" selected="Spring Boot.AutoDefectScanDemoApplication">
@@ -125,7 +131,7 @@
       <module name="AutoDefectScan-demo" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="com.defectscan.*" />
+          <option name="PATTERN" value="com.defectscan.entity.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
@@ -181,7 +187,8 @@
       <workItem from="1739948867539" duration="2512000" />
       <workItem from="1739960350722" duration="10291000" />
       <workItem from="1739970673941" duration="7905000" />
-      <workItem from="1740039501204" duration="22898000" />
+      <workItem from="1740039501204" duration="26985000" />
+      <workItem from="1740308231879" duration="35225000" />
     </task>
     <task id="LOCAL-00001" summary="1">
       <option name="closed" value="true" />
@@ -207,7 +214,15 @@
       <option name="project" value="LOCAL" />
       <updated>1739977988095</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="1">
+      <option name="closed" value="true" />
+      <created>1740146231840</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1740146231840</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
