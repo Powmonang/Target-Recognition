@@ -24,8 +24,9 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public void save(User emp) {
-        emp.setCreateTime(LocalDateTime.now());
-        emp.setUpdateTime(LocalDateTime.now());
+        //已有公共字段填充
+        //emp.setCreateTime(LocalDateTime.now());
+        //emp.setUpdateTime(LocalDateTime.now());
         userMapper.insert(emp);
     }
 
@@ -36,7 +37,8 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public void update(User emp) {
-        emp.setUpdateTime(LocalDateTime.now());
+        //已有公共字段填充
+        //emp.setUpdateTime(LocalDateTime.now());
 
         userMapper.update(emp);
     }

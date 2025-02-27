@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.defectscan.mapper.ImgDetectMapper">
+    <insert id="insertImgDetectList" parameterType="java.util.List">
+        insert into detect_images
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="aiDetectListDTO[0].originalId != null">
+                originalId,
+            </if>
+            <if test="aiDetectListDTO[0].originalLocalUrl != null">
+                originalLocalUrl,
+            </if>
+            <if test="aiDetectListDTO[0].originalAliyunUrl != null">
+                originalAliyunUrl,
+            </if>
+            <if test="aiDetectListDTO[0].detectLocalUrl != null">
+                detectLocalUrl,
+            </if>
+            <if test="aiDetectListDTO[0].detectAliyunUrl != null">
+                detectAliyunUrl,
+            </if>
+            <if test="aiDetectListDTO[0].defectImageName != null">
+                defectImageName,
+            </if>
+            <if test="aiDetectListDTO[0].detectTime != null">
+                detectTime,
+            </if>
+            <if test="aiDetectListDTO[0].defectTagId != null">
+                defectTagId,
+            </if>
+            <if test="aiDetectListDTO[0].defectCount != null">
+                defectCount,
+            </if>
+            <if test="aiDetectListDTO[0].confidenceLevel != null">
+                confidenceLevel,
+            </if>
+            <if test="aiDetectListDTO[0].updateUser != null">
+                updateUser,
+            </if>
+            <if test="aiDetectListDTO[0].updateTime != null">
+                updateTime,
+            </if>
+            <if test="aiDetectListDTO[0].mark != null">
+                mark
+            </if>
+        </trim>
+        VALUES
+        <foreach collection="aiDetectListDTO" item="item" separator=",">
+            <trim prefix="(" suffix=")" suffixOverrides=",">
+                <if test="item.originalId != null">
+                    #{item.originalId},
+                </if>
+                <if test="item.originalLocalUrl != null">
+                    #{item.originalLocalUrl},
+                </if>
+                <if test="item.originalAliyunUrl != null">
+                    #{item.originalAliyunUrl},
+                </if>
+                <if test="item.detectLocalUrl != null">
+                    #{item.detectLocalUrl},
+                </if>
+                <if test="item.detectAliyunUrl != null">
+                    #{item.detectAliyunUrl},
+                </if>
+                <if test="item.defectImageName != null">
+                    #{item.defectImageName},
+                </if>
+                <if test="item.detectTime != null">
+                    #{item.detectTime},
+                </if>
+                <if test="item.defectTagId != null">
+                    #{item.defectTagId},
+                </if>
+                <if test="item.defectCount != null">
+                    #{item.defectCount},
+                </if>
+                <if test="item.confidenceLevel != null">
+                    #{item.confidenceLevel},
+                </if>
+                <if test="item.updateUser != null">
+                    #{item.updateUser},
+                </if>
+                <if test="item.updateTime != null">
+                    #{item.updateTime},
+                </if>
+                <if test="item.mark != null">
+                    #{item.mark}
+                </if>
+            </trim>
+        </foreach>
+    </insert>
+    <select id="selectOriginIdByUrl" parameterType="string" resultType="com.defectscan.dto.OriginAndDetect">
+        SELECT id, localUrl, aliyunUrl, imgName
+        FROM original_images
+        <where>
+            <if test="localUrl != null and localUrl != ''">
+                and localUrl = #{url}
+            </if>
+            <if test="aliyunUrl != null and aliyunUrl != ''">
+                or aliyunUrl = #{url}
+            </if>
+        </where>
+    </select>
+
+</mapper>

@@ -67,7 +67,9 @@ public class AutoFillAspect {
                 setCreateUser.invoke(entity,currentId);
                 setUpdateTime.invoke(entity,now);
                 setUpdateUser.invoke(entity,currentId);
+
             } catch (Exception e) {
+                log.error("insert字段填充失败");
                 e.printStackTrace();
             }
         }else if(operationType == OperationType.UPDATE){
@@ -80,6 +82,7 @@ public class AutoFillAspect {
                 setUpdateTime.invoke(entity,now);
                 setUpdateUser.invoke(entity,currentId);
             } catch (Exception e) {
+                log.error("update字段填充失败");
                 e.printStackTrace();
             }
         }

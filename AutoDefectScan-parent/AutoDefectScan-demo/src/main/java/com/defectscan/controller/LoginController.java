@@ -35,7 +35,6 @@ public class LoginController {
             String jwt = JwtUtils.generateJwt(claims); //jwt包含了当前登录的用户信息
             return Result.success(jwt);
         }
-
         //登录失败, 返回错误信息
         return Result.error("用户名或密码错误");
     }

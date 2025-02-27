@@ -41,6 +41,8 @@ controller:
   img:
     tempDir: temp
     targetDir: imgs
+  ai:
+    detect: http://127.0.0.1:5000/api/ai/detect
 
 
 

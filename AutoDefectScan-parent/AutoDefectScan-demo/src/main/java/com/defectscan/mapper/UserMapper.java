@@ -1,6 +1,8 @@
 package com.defectscan.mapper;
 
+import com.defectscan.annotation.AutoFill;
 import com.defectscan.entity.User;
+import com.defectscan.enumeration.OperationType;
 import org.apache.ibatis.annotations.Insert;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Select;
@@ -39,6 +41,7 @@ public interface UserMapper {
      * 新增用户
      * @param emp
      */
+    @AutoFill(value = OperationType.INSERT)
     @Insert("insert into emp(username, name, gender, image, job, entrydate, dept_id, create_time, update_time) " +
             " values(#{username},#{name},#{gender},#{image},#{job},#{entrydate},#{deptId},#{createTime},#{updateTime})")
     void insert(User emp);
@@ -55,6 +58,7 @@ public interface UserMapper {
      * 更新用户
      * @param emp
      */
+    @AutoFill(value = OperationType.UPDATE)
     void update(User emp);
 
     /**

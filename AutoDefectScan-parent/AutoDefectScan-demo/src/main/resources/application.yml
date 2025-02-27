@@ -42,7 +42,7 @@ controller:
     tempDir: temp
     targetDir: imgs
   ai:
-    detect: http://222.240.1.44:48888/Detect
+    detect: http://127.0.0.1:5000/api/ai/detect
 
 
 
