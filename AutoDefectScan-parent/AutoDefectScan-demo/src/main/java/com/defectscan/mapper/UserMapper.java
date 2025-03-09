@@ -17,6 +17,41 @@ import java.util.List;
 public interface UserMapper {
 
     /**
+     * 根据username查询用户
+     * @param username
+     * @return
+     */
+    User getByUsername(String username);
+
+    /**
+     * 更新用户
+     * @param user
+     */
+    //@AutoFill(value = OperationType.UPDATE)
+    void updateUser(User user);
+
+    /**
+     * 检查该用户是否存在
+     * @param username
+     * @return
+     */
+    int checkUsernameExists(String username);
+
+    /**
+     * 新增（注册）用户
+     * @param user
+     */
+    //@AutoFill(value = OperationType.INSERT)
+    void addUser(User user);
+
+
+
+
+
+
+
+
+    /**
      * 查询总记录数
      * @return
      */
@@ -37,29 +72,11 @@ public interface UserMapper {
      */
     void delete(List<Integer> ids);
 
-    /**
-     * 新增用户
-     * @param emp
-     */
-    @AutoFill(value = OperationType.INSERT)
-    @Insert("insert into emp(username, name, gender, image, job, entrydate, dept_id, create_time, update_time) " +
-            " values(#{username},#{name},#{gender},#{image},#{job},#{entrydate},#{deptId},#{createTime},#{updateTime})")
-    void insert(User emp);
 
-    /**
-     * 根据ID查询用户
-     * @param id
-     * @return
-     */
-    @Select("select * from emp where  id = #{id}")
-    User getById(Integer id);
 
-    /**
-     * 更新用户
-     * @param emp
-     */
-    @AutoFill(value = OperationType.UPDATE)
-    void update(User emp);
+
+
+
 
     /**
      * 根据用户名和密码查询用户

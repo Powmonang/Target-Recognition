@@ -1,6 +1,7 @@
 package com.defectscan.controller.ai;
 
 
+import com.defectscan.annotation.Log;
 import com.defectscan.dto.ImgDetectListDTO;
 import com.defectscan.dto.UrlRequestDTO;
 import com.defectscan.entity.ReturnDetectData;
@@ -21,6 +22,7 @@ public class ImgDetectController {
     @Autowired
     private ImgDetectService aiDetectService;
 
+    //@Log
     @PostMapping("/detect")
     public Result detect(@RequestBody UrlRequestDTO request){
         log.info("请求模型推理");

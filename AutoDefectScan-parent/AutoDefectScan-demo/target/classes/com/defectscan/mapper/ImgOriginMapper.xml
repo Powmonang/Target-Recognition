@@ -4,8 +4,8 @@
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.defectscan.mapper.ImgOriginMapper">
     <insert id="addImgOrigin" parameterType="com.defectscan.entity.ImgOrigin">
-        insert into original_images (localUrl, aliyunUrl, imgName, createTime, createUser, updateUser, updateTime, mark)
-        values (#{localUrl}, #{aliyunUrl}, #{imgName}, #{createTime}, #{createUser}, #{updateUser}, #{updateTime}, #{mark});
+        insert into original_images (localUrl, aliyunUrl, imgName, createTime, updateTime, createUser, updateUser, mark)
+        values (#{localUrl}, #{aliyunUrl}, #{imgName}, #{createTime}, #{updateTime}, #{createUser}, #{updateUser}, #{mark});
     </insert>
 <!--    <update id="changeImg" parameterType="com.defectscan.entity.ImgOrigin">-->
 <!--        UPDATE IMGS-->

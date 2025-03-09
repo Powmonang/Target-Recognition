@@ -14,6 +14,7 @@ import org.springframework.http.*;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
 
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -22,7 +23,7 @@ import java.util.Map;
 @Service
 public class ImgDetectServiceImpl implements ImgDetectService {
 
-    @Value("${controller.ai.detect}")
+    @Value("${demo.service.ai.detect}")
     private String detectUrl;
 
     @Autowired
@@ -63,6 +64,7 @@ public class ImgDetectServiceImpl implements ImgDetectService {
 
             //将新地址写入检测后数据库
             if (returnDetectData != null) {
+
                 imgDetectMapper.insertImgDetectList(returnDetectData.getImgDetectListDTO());
             }
             // 返回处理后的数据

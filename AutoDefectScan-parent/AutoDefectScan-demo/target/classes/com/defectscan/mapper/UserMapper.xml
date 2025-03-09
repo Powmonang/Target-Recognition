@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.defectscan.mapper.UserMapper">
+    <!-- 登陆时，返回数据库中用户数据（包括密码，用于校验）-->
+    <select id="getByUsername" parameterType="string" resultType="com.defectscan.entity.User">
+        select * from user
+        <where>
+            <if test="username!=null">
+                username = #{username}
+            </if>
+        </where>
+    </select>
+
+    <!-- 登陆用户或者修改个人信息时，同步更新数据库中的信息   -->
+    <update id="updateUser" parameterType="com.defectscan.entity.User">
+        update user <set>
+        <if test="password!=null">
+            password = #{password},
+        </if>
+        <if test="name!=null">
+            name = #{name},
+        </if>
+        <if test="gender!=null">
+            gender = #{gender},
+        </if>
+        <if test="createTime!=null">
+            createTime = #{createTime}
+        </if>
+        <if test="updateTime!=null">
+            updateTime = #{updateTime}
+        </if>
+        <if test="createUser!=null">
+            createUser = #{createUser}
+        </if>
+        <if test="updateUser!=null">
+            updateUser = #{updateUser}
+        </if>
+    </set>
+        where id = #{id} and username = #{username};
+    </update>
+
+    <!-- 注册时，添加数据库中的成员 -->
+    <insert id="addUser" parameterType="com.defectscan.entity.User">
+        insert into user (username, password, type, name, gender, image, createTime, updateTime, createUser, updateUser) values (#{username}, #{password}, #{type}, #{name}, #{gender}, #{image}, #{createTime}, #{updateTime}, #{createUser}, #{updateUser})
+    </insert>
+
+    <!-- 检查用户名是否存在 -->
+    <select id="checkUsernameExists" resultType="int">
+        select count(*) from user where username = #{username}
+    </select>
+
+
+    <select id="findUsers" parameterType="com.defectscan.entity.User" resultType="com.defectscan.entity.User">
+        select * from user
+        <where>
+            <if test="id!=null">
+                id = #{id}
+            </if>
+            <if test="ps!=null">
+                and ps = #{ps}
+            </if>
+            <if test="sex!=null">
+                and sex = #{sex}
+            </if>
+            <if test="finalLogin!=null">
+                and Date(finalLogin) = #{finalLogin}
+            </if>
+            <if test="name!=null">
+                and name = #{name}
+            </if>
+        </where>
+    </select>
+</mapper>

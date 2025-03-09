@@ -8,6 +8,8 @@ import com.defectscan.service.ImgOriginService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
+import java.time.LocalDateTime;
+
 @Component
 public class ImgOriginServiceImpl implements ImgOriginService {
 
@@ -28,6 +30,8 @@ public class ImgOriginServiceImpl implements ImgOriginService {
 
     @Override
     public void addImgOrigin(ImgOrigin a) {
+        a.setCreateTime(LocalDateTime.now().toString());
+        a.setUpdateTime(LocalDateTime.now().toString());
         imgOriginMapper.addImgOrigin(a);
     }
 

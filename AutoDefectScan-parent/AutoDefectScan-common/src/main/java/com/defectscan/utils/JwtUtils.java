@@ -3,14 +3,19 @@ package com.defectscan.utils;
 import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.SignatureAlgorithm;
+import org.springframework.beans.factory.annotation.Value;
 
 import java.util.Date;
 import java.util.Map;
 
 public class JwtUtils {
 
-    private static String signKey = "defectscan";
-    private static Long expire = 43200000L; // 有效时间12h
+    @Value("${common.utils.jwtKey}")
+    private static String signKey;
+
+    @Value("${common.utils.jwtExpire}")
+    private static Long expire;
+
 
     /**
      * 生成JWT令牌

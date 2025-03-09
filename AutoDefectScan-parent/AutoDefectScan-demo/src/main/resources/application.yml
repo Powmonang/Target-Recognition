@@ -36,13 +36,26 @@ aliyun:
     accessKeySecret: lZO92qFCWXvhWXw6o7D6yDDWHtlbFF
     bucketName: autodefectscan-demo
 
+
+
+common:
+  utils:
+    safeFactor: 6         # 工作因子（work factor），可以根据需要调整，数值越大，计算越慢，但安全性越高
+    jwtKey: defectscan    # 令牌密钥key
+    jwtExpire: 43200000L  # 持续时间（12h)
+
+
+
 #图片上传地址：
-controller:
-  img:
-    tempDir: temp
-    targetDir: imgs
-  ai:
-    detect: http://127.0.0.1:5000/api/ai/detect
+demo:
+  controller:
+    img:
+      tempDir: temp       # 上传临时图片文件夹
+      targetDir: imgs     # 确认上传图片保存文件夹
+  service:
+    ai:
+      detect: http://172.30.184.224:8080/api/ai/detect     # 与ai后端访问地址
+
 
 
 

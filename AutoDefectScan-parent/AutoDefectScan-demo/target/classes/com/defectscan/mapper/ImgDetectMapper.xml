@@ -36,11 +36,17 @@
             <if test="aiDetectListDTO[0].confidenceLevel != null">
                 confidenceLevel,
             </if>
-            <if test="aiDetectListDTO[0].updateUser != null">
-                updateUser,
+            <if test="aiDetectListDTO[0].createTime != null">
+                createTime,
             </if>
             <if test="aiDetectListDTO[0].updateTime != null">
                 updateTime,
+            </if>
+            <if test="aiDetectListDTO[0].createUser != null">
+                createUser,
+            </if>
+            <if test="aiDetectListDTO[0].updateUser != null">
+                updateUser,
             </if>
             <if test="aiDetectListDTO[0].mark != null">
                 mark
@@ -79,11 +85,17 @@
                 <if test="item.confidenceLevel != null">
                     #{item.confidenceLevel},
                 </if>
-                <if test="item.updateUser != null">
-                    #{item.updateUser},
+                <if test="item.createTime != null">
+                    #{item.createTime},
                 </if>
                 <if test="item.updateTime != null">
                     #{item.updateTime},
+                </if>
+                <if test="item.createUser != null">
+                    #{item.createUser},
+                </if>
+                <if test="item.updateUser != null">
+                    #{item.updateUser},
                 </if>
                 <if test="item.mark != null">
                     #{item.mark}

@@ -31,9 +31,10 @@ public class LogAspect {
     public Object recordLog(ProceedingJoinPoint joinPoint) throws Throwable {
         //操作人ID - 当前登录用户ID
         //获取请求头中的jwt令牌, 解析令牌
+
         String jwt = request.getHeader("token");
         Claims claims = JwtUtils.parseJWT(jwt);
-        Integer operateUser = (Integer) claims.get("id");
+        Integer operateUser = (Integer) claims.get("username");
 
         //操作时间
         LocalDateTime operateTime = LocalDateTime.now();
