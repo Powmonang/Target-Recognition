@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.defectscan.mapper.ImgSafeMapMapper">
+    <insert id="addImgSafeMap">
+        insert into ImgSafeMap(imgTypeId,safeTypeId, model,remark)
+        values (#{imgTypeId},#{safeTypeId},#{model},#{remark})
+    </insert>
+    <delete id="delImgSafeMap" parameterType="com.defectscan.entity.ImgSafeMap">
+        delete from ImgSafeMap
+        <where>
+            <if test="id!=null">
+                id=#{id}
+            </if>
+            <if test="safeTypeId!=null">
+                and safeTypeId=#{safeTypeId}
+            </if>
+        </where>
+    </delete>
+
+    <select id="findImgSafeMap" parameterType="com.defectscan.entity.ImgSafeMap" resultType="com.defectscan.entity.ImgSafeMap">
+        Select * from ImgSafeMap
+        <where>
+            <if test="imgTypeId!=null">
+                imgTypeId=#{imgTypeId}
+            </if>
+            <if test="model!=null">
+                and model=#{model}
+            </if>
+        </where>
+    </select>
+</mapper>

@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.defectscan.mapper.OpeImgMapper">
+
+    <insert id="addOpeImg" parameterType="com.defectscan.entity.OpeImg">
+        insert into opeimgs(oper, imgId, safeType, keyTime, indexUrl, flag)
+        values(#{oper}, #{imgId}, #{safeType}, #{keyTime}, #{indexUrl}, #{flag})
+    </insert>
+    <update id="changeOpeImg" parameterType="com.defectscan.entity.OpeImg">
+        update opeimgs <set>
+        <if test="indexUrl!=null">
+            indexUrl = #{indexUrl},
+        </if>
+        <if test="keyTime!=null">
+            keyTime = #{keyTime},
+        </if>
+        <if test="oper!=null">
+            oper = #{oper},
+        </if>
+        <if test="safeType!=null">
+            safeType = #{safeType},
+        </if>
+        <if test="flag!=null">
+            flag = #{flag}
+        </if>
+    </set>
+        <where>
+            safeType = #{safeType} and imgId = #{imgId}
+        </where>
+    </update>
+    <delete id="delOpeImg" parameterType="com.defectscan.entity.OpeImg">
+        delete from opeimgs
+        <where>
+            <if test="id!=null">
+                id = #{id}
+            </if>
+            <if test="imgId!=null">
+                and imgId = #{imgId}
+            </if>
+        </where>
+
+    </delete>
+    <select id="findOpeImgs" parameterType="com.defectscan.entity.OpeImg" resultType="com.defectscan.entity.OpeImg">
+        select * from opeimgs
+        <where>
+            <if test="oper!=null">
+                oper = #{oper}
+            </if>
+            <if test="imgId!=null">
+                and imgId = #{imgId}
+            </if>
+            <if test="keyTime!=null">
+                and keyTime = #{keyTime}
+            </if>
+            <if test="id!=null">
+                and id = #{id}
+            </if>
+            <if test="safeType!=null">
+                and safeType = #{safeType}
+            </if>
+        </where>
+    </select>
+    <select id="getSampleHiddens" resultType="com.defectscan.entity.OpeImg">
+        select DISTINCT safeType from opeimgs
+    </select>
+</mapper>

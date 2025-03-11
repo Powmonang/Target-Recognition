@@ -29,9 +29,5 @@ public class SafeUtil {
     public static boolean checkPassword(String rawPassword, String hashedPassword) {
         return BCrypt.checkpw(rawPassword, hashedPassword);
     }
-
-    public static void main(String[] args) {
-
-    }
 }
 

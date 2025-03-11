@@ -10,11 +10,11 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @AllArgsConstructor
 public class ImgType {
-    private int id;//类别ID
+    private String id;//类别ID
     private String type;//图像类别
     private String content;//内容
     private String mark;//备注
-    public static ImgType createById(int id){
+    public static ImgType createById(String id){
         ImgType result = new ImgType();
         result.setId(id);
         return result;
