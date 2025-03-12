@@ -1,4 +1,6 @@
+com\defectscan\controller\user\Login.class
+com\defectscan\service\UserService.class
 com\defectscan\AutoDefectScanDemoApplication.class
-com\defectscan\config\WebMvcConfiguration.class
-com\defectscan\controller\ImageController.class
-com\defectscan\config\OssConfiguration.class
+com\defectscan\service\impl\UserServiceImpl.class
+com\defectscan\controller\test.class
+com\defectscan\mapper\UserMapper.class

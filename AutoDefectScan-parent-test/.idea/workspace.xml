@@ -1,0 +1,466 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="251723c6-774f-4618-b88f-51cf430d0158" name="更改" comment="1">
+      <change afterPath="$PROJECT_DIR$/../AutoDefectScan-parent/AutoDefectScan-pojo/src/main/java/com/defectscan/entity/MyImg.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../AutoDefectScan-parent/.idea/dataSources/46c788f8-96c4-42ff-9076-540970e4fcdd.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../AutoDefectScan-parent/.idea/dataSources/46c788f8-96c4-42ff-9076-540970e4fcdd.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../AutoDefectScan-parent/.idea/dataSources/64e04760-f095-409f-8ec6-72e8d318fa63.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../AutoDefectScan-parent/.idea/dataSources/64e04760-f095-409f-8ec6-72e8d318fa63.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../AutoDefectScan-parent/.idea/dataSources/64e04760-f095-409f-8ec6-72e8d318fa63/storage_v2/_src_/schema/auto_defect_scan.-yGeAQ.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../AutoDefectScan-parent/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../AutoDefectScan-parent/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../AutoDefectScan-parent/AutoDefectScan-common/src/main/java/com/defectscan/constant/AutoFillConstant.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../AutoDefectScan-parent/AutoDefectScan-common/src/main/java/com/defectscan/constant/JwtClaimsConstant.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../AutoDefectScan-parent/AutoDefectScan-common/src/main/java/com/defectscan/constant/MessageConstant.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../AutoDefectScan-parent/AutoDefectScan-common/src/main/java/com/defectscan/constant/PasswordConstant.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../AutoDefectScan-parent/AutoDefectScan-common/src/main/java/com/defectscan/constant/StatusConstant.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../AutoDefectScan-parent/AutoDefectScan-common/src/main/java/com/defectscan/context/BaseContext.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../AutoDefectScan-parent/AutoDefectScan-common/src/main/java/com/defectscan/enumeration/OperationType.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../AutoDefectScan-parent/AutoDefectScan-common/src/main/java/com/defectscan/exception/BaseException.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../AutoDefectScan-parent/AutoDefectScan-common/src/main/java/com/defectscan/filter/DemoFilter.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../AutoDefectScan-parent/AutoDefectScan-common/src/main/java/com/defectscan/filter/LoginCheckFilter.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../AutoDefectScan-parent/AutoDefectScan-common/src/main/java/com/defectscan/filter/XbcFilter.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../AutoDefectScan-parent/AutoDefectScan-common/src/main/java/com/defectscan/properties/AliOssProperties.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../AutoDefectScan-parent/AutoDefectScan-common/src/main/java/com/defectscan/result/Result.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../AutoDefectScan-parent/AutoDefectScan-common/src/main/java/com/defectscan/utils/AliOssUtil.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../AutoDefectScan-parent/AutoDefectScan-common/src/main/java/com/defectscan/utils/JwtUtils.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../AutoDefectScan-parent/AutoDefectScan-common/src/main/java/com/defectscan/utils/SafeUtil.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../AutoDefectScan-parent/AutoDefectScan-common/src/main/java/com/defectscan/utils/UploadImgUtil.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../AutoDefectScan-parent/AutoDefectScan-common/target/AutoDefectScan-common-1.0-SNAPSHOT.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../AutoDefectScan-parent/AutoDefectScan-common/target/classes/com/defectscan/constant/AutoFillConstant.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../AutoDefectScan-parent/AutoDefectScan-common/target/classes/com/defectscan/constant/JwtClaimsConstant.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../AutoDefectScan-parent/AutoDefectScan-common/target/classes/com/defectscan/constant/MessageConstant.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../AutoDefectScan-parent/AutoDefectScan-common/target/classes/com/defectscan/constant/PasswordConstant.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../AutoDefectScan-parent/AutoDefectScan-common/target/classes/com/defectscan/constant/StatusConstant.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../AutoDefectScan-parent/AutoDefectScan-common/target/classes/com/defectscan/context/BaseContext.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../AutoDefectScan-parent/AutoDefectScan-common/target/classes/com/defectscan/enumeration/OperationType.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../AutoDefectScan-parent/AutoDefectScan-common/target/classes/com/defectscan/exception/BaseException.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../AutoDefectScan-parent/AutoDefectScan-common/target/classes/com/defectscan/filter/DemoFilter.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../AutoDefectScan-parent/AutoDefectScan-common/target/classes/com/defectscan/filter/LoginCheckFilter.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../AutoDefectScan-parent/AutoDefectScan-common/target/classes/com/defectscan/filter/XbcFilter.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../AutoDefectScan-parent/AutoDefectScan-common/target/classes/com/defectscan/properties/AliOssProperties.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../AutoDefectScan-parent/AutoDefectScan-common/target/classes/com/defectscan/result/Result.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../AutoDefectScan-parent/AutoDefectScan-common/target/classes/com/defectscan/utils/AliOssUtil.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../AutoDefectScan-parent/AutoDefectScan-common/target/classes/com/defectscan/utils/JwtUtils.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../AutoDefectScan-parent/AutoDefectScan-common/target/classes/com/defectscan/utils/SafeUtil.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../AutoDefectScan-parent/AutoDefectScan-common/target/classes/com/defectscan/utils/UploadImgUtil.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../AutoDefectScan-parent/AutoDefectScan-common/target/maven-archiver/pom.properties" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../AutoDefectScan-parent/AutoDefectScan-common/target/maven-status/maven-compiler-plugin/compile/default-compile/createdFiles.lst" beforeDir="false" afterPath="$PROJECT_DIR$/../AutoDefectScan-parent/AutoDefectScan-common/target/maven-status/maven-compiler-plugin/compile/default-compile/createdFiles.lst" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../AutoDefectScan-parent/AutoDefectScan-common/target/maven-status/maven-compiler-plugin/compile/default-compile/inputFiles.lst" beforeDir="false" afterPath="$PROJECT_DIR$/../AutoDefectScan-parent/AutoDefectScan-common/target/maven-status/maven-compiler-plugin/compile/default-compile/inputFiles.lst" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../AutoDefectScan-parent/AutoDefectScan-common/target/maven-status/maven-compiler-plugin/testCompile/default-testCompile/createdFiles.lst" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../AutoDefectScan-parent/AutoDefectScan-common/target/maven-status/maven-compiler-plugin/testCompile/default-testCompile/inputFiles.lst" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../AutoDefectScan-parent/AutoDefectScan-demo/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../AutoDefectScan-parent/AutoDefectScan-demo/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../AutoDefectScan-parent/AutoDefectScan-demo/src/main/java/com/defectscan/controller/ai.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../AutoDefectScan-parent/AutoDefectScan-demo/src/main/java/com/defectscan/controller/common.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../AutoDefectScan-parent/AutoDefectScan-demo/src/main/java/com/defectscan/controller/data.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../AutoDefectScan-parent/AutoDefectScan-demo/src/main/java/com/defectscan/controller/img.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../AutoDefectScan-parent/AutoDefectScan-demo/src/main/java/com/defectscan/controller/imgSafeMap.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../AutoDefectScan-parent/AutoDefectScan-demo/src/main/java/com/defectscan/controller/imgType.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../AutoDefectScan-parent/AutoDefectScan-demo/src/main/java/com/defectscan/controller/inferImg.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../AutoDefectScan-parent/AutoDefectScan-demo/src/main/java/com/defectscan/controller/model.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../AutoDefectScan-parent/AutoDefectScan-demo/src/main/java/com/defectscan/controller/opeImg.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../AutoDefectScan-parent/AutoDefectScan-demo/src/main/java/com/defectscan/controller/safeType.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../AutoDefectScan-parent/AutoDefectScan-demo/src/main/java/com/defectscan/controller/upload.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../AutoDefectScan-parent/AutoDefectScan-demo/src/main/java/com/defectscan/controller/user.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../AutoDefectScan-parent/AutoDefectScan-demo/src/main/java/com/defectscan/controller/warnImgs.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../AutoDefectScan-parent/AutoDefectScan-demo/src/main/java/com/defectscan/controller/warnType.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../AutoDefectScan-parent/AutoDefectScan-demo/src/main/java/com/defectscan/handle/GlobalExceptionHandler.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../AutoDefectScan-parent/AutoDefectScan-demo/src/main/java/com/defectscan/interceptor/LoginInterceptor.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../AutoDefectScan-parent/AutoDefectScan-demo/src/main/java/com/defectscan/interceptor/WebConfig.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../AutoDefectScan-parent/AutoDefectScan-demo/src/main/java/com/defectscan/mapper/ImgMapper.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../AutoDefectScan-parent/AutoDefectScan-demo/src/main/java/com/defectscan/mapper/ImgSafeMapMapper.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../AutoDefectScan-parent/AutoDefectScan-demo/src/main/java/com/defectscan/mapper/ImgTypeMapper.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../AutoDefectScan-parent/AutoDefectScan-demo/src/main/java/com/defectscan/mapper/InferImgMapper.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../AutoDefectScan-parent/AutoDefectScan-demo/src/main/java/com/defectscan/mapper/ModelMapper.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../AutoDefectScan-parent/AutoDefectScan-demo/src/main/java/com/defectscan/mapper/OpeImgMapper.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../AutoDefectScan-parent/AutoDefectScan-demo/src/main/java/com/defectscan/mapper/SafeTypeMapper.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../AutoDefectScan-parent/AutoDefectScan-demo/src/main/java/com/defectscan/mapper/UserMapper.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../AutoDefectScan-parent/AutoDefectScan-demo/src/main/java/com/defectscan/mapper/WarnImgsMapper.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../AutoDefectScan-parent/AutoDefectScan-demo/src/main/java/com/defectscan/mapper/WarnTypeMapper.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../AutoDefectScan-parent/AutoDefectScan-demo/src/main/java/com/defectscan/request/RequestConfig.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../AutoDefectScan-parent/AutoDefectScan-demo/src/main/java/com/defectscan/schedule/task.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../AutoDefectScan-parent/AutoDefectScan-demo/src/main/java/com/defectscan/service/AIService.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../AutoDefectScan-parent/AutoDefectScan-demo/src/main/java/com/defectscan/service/DataService.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../AutoDefectScan-parent/AutoDefectScan-demo/src/main/java/com/defectscan/service/ImgSafeMapService.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../AutoDefectScan-parent/AutoDefectScan-demo/src/main/java/com/defectscan/service/ImgService.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../AutoDefectScan-parent/AutoDefectScan-demo/src/main/java/com/defectscan/service/ImgTypeService.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../AutoDefectScan-parent/AutoDefectScan-demo/src/main/java/com/defectscan/service/InferImgService.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../AutoDefectScan-parent/AutoDefectScan-demo/src/main/java/com/defectscan/service/ModelService.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../AutoDefectScan-parent/AutoDefectScan-demo/src/main/java/com/defectscan/service/OpeImgService.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../AutoDefectScan-parent/AutoDefectScan-demo/src/main/java/com/defectscan/service/SafeTypeService.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../AutoDefectScan-parent/AutoDefectScan-demo/src/main/java/com/defectscan/service/UserService.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../AutoDefectScan-parent/AutoDefectScan-demo/src/main/java/com/defectscan/service/WarnImgsService.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../AutoDefectScan-parent/AutoDefectScan-demo/src/main/java/com/defectscan/service/WarnTypeService.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../AutoDefectScan-parent/AutoDefectScan-demo/src/main/java/com/defectscan/service/impl/AIA.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../AutoDefectScan-parent/AutoDefectScan-demo/src/main/java/com/defectscan/service/impl/DataA.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../AutoDefectScan-parent/AutoDefectScan-demo/src/main/java/com/defectscan/service/impl/ImgA.java" beforeDir="false" afterPath="$PROJECT_DIR$/../AutoDefectScan-parent/AutoDefectScan-demo/src/main/java/com/defectscan/service/impl/ImgA.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../AutoDefectScan-parent/AutoDefectScan-demo/src/main/java/com/defectscan/service/impl/ImgSafeMapA.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../AutoDefectScan-parent/AutoDefectScan-demo/src/main/java/com/defectscan/service/impl/InferImgA.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../AutoDefectScan-parent/AutoDefectScan-demo/src/main/java/com/defectscan/service/impl/ModelA.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../AutoDefectScan-parent/AutoDefectScan-demo/src/main/java/com/defectscan/service/impl/OpeImgA.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../AutoDefectScan-parent/AutoDefectScan-demo/src/main/java/com/defectscan/service/impl/TypeA.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../AutoDefectScan-parent/AutoDefectScan-demo/src/main/java/com/defectscan/service/impl/WarnImgsA.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../AutoDefectScan-parent/AutoDefectScan-demo/src/main/java/com/defectscan/service/impl/WarnTypeA.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../AutoDefectScan-parent/AutoDefectScan-demo/src/main/java/com/defectscan/service/impl/safeTypeA.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../AutoDefectScan-parent/AutoDefectScan-demo/src/main/java/com/defectscan/service/impl/userA.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../AutoDefectScan-parent/AutoDefectScan-demo/src/main/java/com/defectscan/tools/FileTool.java" beforeDir="false" afterPath="$PROJECT_DIR$/../AutoDefectScan-parent/AutoDefectScan-common/src/main/java/com/defectscan/tools/FileTool.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../AutoDefectScan-parent/AutoDefectScan-demo/src/main/java/com/defectscan/tools/JwtTool.java" beforeDir="false" afterPath="$PROJECT_DIR$/../AutoDefectScan-parent/AutoDefectScan-common/src/main/java/com/defectscan/tools/JwtTool.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../AutoDefectScan-parent/AutoDefectScan-demo/src/main/java/com/defectscan/tools/SafeTool.java" beforeDir="false" afterPath="$PROJECT_DIR$/../AutoDefectScan-parent/AutoDefectScan-common/src/main/java/com/defectscan/tools/SafeTool.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../AutoDefectScan-parent/AutoDefectScan-demo/src/main/resources/application.yml" beforeDir="false" afterPath="$PROJECT_DIR$/../AutoDefectScan-parent/AutoDefectScan-demo/src/main/resources/application.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../AutoDefectScan-parent/AutoDefectScan-demo/src/main/resources/com/defectscan/mapper/ImgMapper.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../AutoDefectScan-parent/AutoDefectScan-demo/src/main/resources/com/defectscan/mapper/ImgSafeMapMapper.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../AutoDefectScan-parent/AutoDefectScan-demo/src/main/resources/com/defectscan/mapper/ImgTypeMapper.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../AutoDefectScan-parent/AutoDefectScan-demo/src/main/resources/com/defectscan/mapper/InferImgMapper.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../AutoDefectScan-parent/AutoDefectScan-demo/src/main/resources/com/defectscan/mapper/ModelMapper.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../AutoDefectScan-parent/AutoDefectScan-demo/src/main/resources/com/defectscan/mapper/OpeImgMapper.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../AutoDefectScan-parent/AutoDefectScan-demo/src/main/resources/com/defectscan/mapper/SafeTypeMapper.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../AutoDefectScan-parent/AutoDefectScan-demo/src/main/resources/com/defectscan/mapper/UserMapper.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../AutoDefectScan-parent/AutoDefectScan-demo/src/main/resources/com/defectscan/mapper/WarnImgsMapper.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../AutoDefectScan-parent/AutoDefectScan-demo/src/main/resources/com/defectscan/mapper/WarnTypeMapper.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../AutoDefectScan-parent/AutoDefectScan-demo/target/AutoDefectScan-demo-1.0-SNAPSHOT.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../AutoDefectScan-parent/AutoDefectScan-demo/target/AutoDefectScan-demo-1.0-SNAPSHOT.jar.original" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../AutoDefectScan-parent/AutoDefectScan-demo/target/classes/application.yml" beforeDir="false" afterPath="$PROJECT_DIR$/../AutoDefectScan-parent/AutoDefectScan-demo/target/classes/application.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../AutoDefectScan-parent/AutoDefectScan-demo/target/classes/com/defectscan/annotation/AutoFill.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../AutoDefectScan-parent/AutoDefectScan-demo/target/classes/com/defectscan/annotation/Log.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../AutoDefectScan-parent/AutoDefectScan-demo/target/classes/com/defectscan/aspect/AutoFillAspect.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../AutoDefectScan-parent/AutoDefectScan-demo/target/classes/com/defectscan/aspect/LogAspect.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../AutoDefectScan-parent/AutoDefectScan-demo/target/classes/com/defectscan/config/AppConfiguration.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../AutoDefectScan-parent/AutoDefectScan-demo/target/classes/com/defectscan/config/CorsConfiguration.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../AutoDefectScan-parent/AutoDefectScan-demo/target/classes/com/defectscan/config/OssConfiguration.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../AutoDefectScan-parent/AutoDefectScan-demo/target/classes/com/defectscan/config/WebMvcConfiguration.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../AutoDefectScan-parent/AutoDefectScan-demo/target/classes/com/defectscan/controller/ai/ImgDetectController.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../AutoDefectScan-parent/AutoDefectScan-demo/target/classes/com/defectscan/controller/img/uploadController.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../AutoDefectScan-parent/AutoDefectScan-demo/target/classes/com/defectscan/controller/user/LoginController.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../AutoDefectScan-parent/AutoDefectScan-demo/target/classes/com/defectscan/handler/GlobalExceptionHandler.class" beforeDir="false" afterPath="$PROJECT_DIR$/../AutoDefectScan-parent/AutoDefectScan-demo/target/classes/com/defectscan/handler/GlobalExceptionHandler.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../AutoDefectScan-parent/AutoDefectScan-demo/target/classes/com/defectscan/mapper/ImgDetectMapper.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../AutoDefectScan-parent/AutoDefectScan-demo/target/classes/com/defectscan/mapper/ImgDetectMapper.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../AutoDefectScan-parent/AutoDefectScan-demo/target/classes/com/defectscan/mapper/ImgOriginMapper.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../AutoDefectScan-parent/AutoDefectScan-demo/target/classes/com/defectscan/mapper/ImgOriginMapper.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../AutoDefectScan-parent/AutoDefectScan-demo/target/classes/com/defectscan/mapper/OperateLogMapper.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../AutoDefectScan-parent/AutoDefectScan-demo/target/classes/com/defectscan/mapper/UserMapper.class" beforeDir="false" afterPath="$PROJECT_DIR$/../AutoDefectScan-parent/AutoDefectScan-demo/target/classes/com/defectscan/mapper/UserMapper.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../AutoDefectScan-parent/AutoDefectScan-demo/target/classes/com/defectscan/mapper/UserMapper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../AutoDefectScan-parent/AutoDefectScan-demo/target/classes/com/defectscan/mapper/UserMapper.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../AutoDefectScan-parent/AutoDefectScan-demo/target/classes/com/defectscan/service/ImgDetectService.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../AutoDefectScan-parent/AutoDefectScan-demo/target/classes/com/defectscan/service/ImgOriginService.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../AutoDefectScan-parent/AutoDefectScan-demo/target/classes/com/defectscan/service/UserService.class" beforeDir="false" afterPath="$PROJECT_DIR$/../AutoDefectScan-parent/AutoDefectScan-demo/target/classes/com/defectscan/service/UserService.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../AutoDefectScan-parent/AutoDefectScan-demo/target/classes/com/defectscan/service/impl/ImgDetectServiceImpl.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../AutoDefectScan-parent/AutoDefectScan-demo/target/classes/com/defectscan/service/impl/ImgOriginServiceImpl.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../AutoDefectScan-parent/AutoDefectScan-demo/target/classes/com/defectscan/service/impl/UserServiceImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/../AutoDefectScan-parent/AutoDefectScan-demo/target/classes/com/defectscan/service/impl/UserServiceImpl.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../AutoDefectScan-parent/AutoDefectScan-demo/target/maven-archiver/pom.properties" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../AutoDefectScan-parent/AutoDefectScan-demo/target/maven-status/maven-compiler-plugin/compile/default-compile/createdFiles.lst" beforeDir="false" afterPath="$PROJECT_DIR$/../AutoDefectScan-parent/AutoDefectScan-demo/target/maven-status/maven-compiler-plugin/compile/default-compile/createdFiles.lst" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../AutoDefectScan-parent/AutoDefectScan-demo/target/maven-status/maven-compiler-plugin/compile/default-compile/inputFiles.lst" beforeDir="false" afterPath="$PROJECT_DIR$/../AutoDefectScan-parent/AutoDefectScan-demo/target/maven-status/maven-compiler-plugin/compile/default-compile/inputFiles.lst" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../AutoDefectScan-parent/AutoDefectScan-demo/target/maven-status/maven-compiler-plugin/testCompile/default-testCompile/createdFiles.lst" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../AutoDefectScan-parent/AutoDefectScan-demo/target/maven-status/maven-compiler-plugin/testCompile/default-testCompile/inputFiles.lst" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../AutoDefectScan-parent/AutoDefectScan-pojo/src/main/java/com/defectscan/dto/AiDetectDTO.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../AutoDefectScan-parent/AutoDefectScan-pojo/src/main/java/com/defectscan/dto/GetGasDataDTO.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../AutoDefectScan-parent/AutoDefectScan-pojo/src/main/java/com/defectscan/dto/ImgDTO.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../AutoDefectScan-parent/AutoDefectScan-pojo/src/main/java/com/defectscan/dto/TrainDTO.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../AutoDefectScan-parent/AutoDefectScan-pojo/src/main/java/com/defectscan/entity/CheckPhotoReport.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../AutoDefectScan-parent/AutoDefectScan-pojo/src/main/java/com/defectscan/entity/GasReport.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../AutoDefectScan-parent/AutoDefectScan-pojo/src/main/java/com/defectscan/entity/GasTokenBody.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../AutoDefectScan-parent/AutoDefectScan-pojo/src/main/java/com/defectscan/entity/Hidden.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../AutoDefectScan-parent/AutoDefectScan-pojo/src/main/java/com/defectscan/entity/Img.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../AutoDefectScan-parent/AutoDefectScan-pojo/src/main/java/com/defectscan/entity/ImgSafeMap.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../AutoDefectScan-parent/AutoDefectScan-pojo/src/main/java/com/defectscan/entity/ImgType.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../AutoDefectScan-parent/AutoDefectScan-pojo/src/main/java/com/defectscan/entity/InferImg.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../AutoDefectScan-parent/AutoDefectScan-pojo/src/main/java/com/defectscan/entity/Model.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../AutoDefectScan-parent/AutoDefectScan-pojo/src/main/java/com/defectscan/entity/OpeImg.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../AutoDefectScan-parent/AutoDefectScan-pojo/src/main/java/com/defectscan/entity/PageBean.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../AutoDefectScan-parent/AutoDefectScan-pojo/src/main/java/com/defectscan/entity/SafeType.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../AutoDefectScan-parent/AutoDefectScan-pojo/src/main/java/com/defectscan/entity/User.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../AutoDefectScan-parent/AutoDefectScan-pojo/src/main/java/com/defectscan/entity/WarnImgs.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../AutoDefectScan-parent/AutoDefectScan-pojo/src/main/java/com/defectscan/entity/WarnType.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../AutoDefectScan-parent/AutoDefectScan-pojo/src/main/java/com/defectscan/request/TrainRequest.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../AutoDefectScan-parent/AutoDefectScan-pojo/src/main/java/com/defectscan/respond/GasRespond.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../AutoDefectScan-parent/AutoDefectScan-pojo/src/main/java/com/defectscan/respond/GasRespondAll.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../AutoDefectScan-parent/AutoDefectScan-pojo/src/main/java/com/defectscan/vo/ImgSafeMapVo.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../AutoDefectScan-parent/AutoDefectScan-pojo/src/main/java/com/defectscan/vo/ImgVo.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../AutoDefectScan-parent/AutoDefectScan-pojo/src/main/java/com/defectscan/vo/ReportsTotalVo.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../AutoDefectScan-parent/AutoDefectScan-pojo/src/main/java/com/defectscan/vo/WarnImgsVo.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../AutoDefectScan-parent/AutoDefectScan-pojo/target/AutoDefectScan-pojo-1.0-SNAPSHOT.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../AutoDefectScan-parent/AutoDefectScan-pojo/target/classes/com/defectscan/dto/ImgDTO.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../AutoDefectScan-parent/AutoDefectScan-pojo/target/classes/com/defectscan/dto/ImgDetectListDTO.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../AutoDefectScan-parent/AutoDefectScan-pojo/target/classes/com/defectscan/dto/OriginAndDetect.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../AutoDefectScan-parent/AutoDefectScan-pojo/target/classes/com/defectscan/dto/UrlRequestDTO.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../AutoDefectScan-parent/AutoDefectScan-pojo/target/classes/com/defectscan/entity/ImgDetectData.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../AutoDefectScan-parent/AutoDefectScan-pojo/target/classes/com/defectscan/entity/ImgOrigin.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../AutoDefectScan-parent/AutoDefectScan-pojo/target/classes/com/defectscan/entity/OperateLog.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../AutoDefectScan-parent/AutoDefectScan-pojo/target/classes/com/defectscan/entity/ReturnDetectData.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../AutoDefectScan-parent/AutoDefectScan-pojo/target/classes/com/defectscan/entity/User.class" beforeDir="false" afterPath="$PROJECT_DIR$/../AutoDefectScan-parent/AutoDefectScan-pojo/target/classes/com/defectscan/entity/User.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../AutoDefectScan-parent/AutoDefectScan-pojo/target/classes/com/defectscan/vo/UserVo.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../AutoDefectScan-parent/AutoDefectScan-pojo/target/maven-archiver/pom.properties" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../AutoDefectScan-parent/AutoDefectScan-pojo/target/maven-status/maven-compiler-plugin/compile/default-compile/inputFiles.lst" beforeDir="false" afterPath="$PROJECT_DIR$/../AutoDefectScan-parent/AutoDefectScan-pojo/target/maven-status/maven-compiler-plugin/compile/default-compile/inputFiles.lst" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../AutoDefectScan-parent/AutoDefectScan-pojo/target/maven-status/maven-compiler-plugin/testCompile/default-testCompile/inputFiles.lst" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../AutoDefectScan-parent/autodefectscan.sql" beforeDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Interface" />
+        <option value="Class" />
+      </list>
+    </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_BRANCH_BY_REPOSITORY">
+      <map>
+        <entry key="$PROJECT_DIR$" value="cu" />
+      </map>
+    </option>
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
+  </component>
+  <component name="MavenImportPreferences">
+    <option name="generalSettings">
+      <MavenGeneralSettings>
+        <option name="mavenHomeTypeForPersistence" value="WRAPPER" />
+        <option name="userSettingsFile" value="D:\user\develop\apache-maven-3.6.1\conf\settings.xml" />
+      </MavenGeneralSettings>
+    </option>
+  </component>
+  <component name="MavenRunner">
+    <option name="jreName" value="22" />
+  </component>
+  <component name="ProjectColorInfo">{
+  &quot;associatedIndex&quot;: 3
+}</component>
+  <component name="ProjectId" id="2tFXabQbx8RDfTG700ksnYb5BT2" />
+  <component name="ProjectLevelVcsManager">
+    <ConfirmationsSetting value="1" id="Add" />
+  </component>
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "Maven.AutoDefectScan-common [compile].executor": "Run",
+    "Maven.AutoDefectScan-common [install].executor": "Run",
+    "Maven.AutoDefectScan-demo [compile].executor": "Run",
+    "Maven.AutoDefectScan-demo [install].executor": "Run",
+    "Maven.AutoDefectScan-demo [package].executor": "Run",
+    "Maven.AutoDefectScan-parent [clean].executor": "Run",
+    "Maven.AutoDefectScan-parent [compile].executor": "Run",
+    "Maven.AutoDefectScan-parent [install].executor": "Run",
+    "Maven.AutoDefectScan-parent [package].executor": "Run",
+    "Maven.AutoDefectScan-pojo [compile].executor": "Run",
+    "Maven.AutoDefectScan-pojo [install].executor": "Run",
+    "RequestMappingsPanelOrder0": "0",
+    "RequestMappingsPanelOrder1": "1",
+    "RequestMappingsPanelWidth0": "75",
+    "RequestMappingsPanelWidth1": "75",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "Spring Boot.AutoDefectScanDemoApplication.executor": "Run",
+    "git-widget-placeholder": "master",
+    "jdk.selected.JAVA_MODULE": "17",
+    "kotlin-language-version-configured": "true",
+    "last_opened_file_path": "D:/user/code/Java/AutoDefectScan-parent",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "project.structure.last.edited": "模块",
+    "project.structure.proportion": "0.15",
+    "project.structure.side.proportion": "0.2",
+    "settings.editor.selected.configurable": "reference.projectsettings.compiler.annotationProcessors",
+    "vue.rearranger.settings.migration": "true",
+    "应用程序.Main.executor": "Run"
+  },
+  "keyToStringList": {
+    "ChangesTree.GroupingKeys": [
+      "directory"
+    ],
+    "DatabaseDriversLRU": [
+      "cassandra",
+      "mysql"
+    ]
+  }
+}]]></component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="D:\user\code\fuchuang\AutoDefectScan-parent\AutoDefectScan-demo\src\main\resources\com\defectscan\mapper" />
+      <recent name="D:\user\code\fuchuang\AutoDefectScan-parent\AutoDefectScan-demo\src\main\java\com\defectscan" />
+      <recent name="D:\user\code\fuchuang\AutoDefectScan-parent\AutoDefectScan-demo\src\main\java\com\defectscan\service" />
+      <recent name="D:\user\code\fuchuang\AutoDefectScan-parent\AutoDefectScan-pojo\src\main\java\com\defectscan" />
+      <recent name="D:\user\code\fuchuang\AutoDefectScan-parent\AutoDefectScan-pojo\src\main\java\com\defectscan\dto" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="D:\user\code\fuchuang\AutoDefectScan-parent\AutoDefectScan-demo\src\main\resources\com\defectscan\mapper" />
+      <recent name="D:\user\code\fuchuang\AutoDefectScan-parent\AutoDefectScan-demo\src\main\resources" />
+      <recent name="D:\user\code\fuchuang\AutoDefectScan-parent\AutoDefectScan-common\src\main\java\com\defectscan\properties" />
+      <recent name="D:\user\code\fuchuang\AutoDefectScan-parent\AutoDefectScan-common\src\main\java\com\defectscan\utils" />
+    </key>
+    <key name="CopyClassDialog.RECENTS_KEY">
+      <recent name="com.defectscan.service.impl" />
+      <recent name="com.defectscan.mapper" />
+      <recent name="com.defectscan.entity" />
+      <recent name="com.defectscan.vo" />
+      <recent name="com.defectscan.service" />
+    </key>
+  </component>
+  <component name="RunManager" selected="Spring Boot.AutoDefectScanDemoApplication">
+    <configuration name="Main" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="com.defectscan.Main" />
+      <module name="AutoDefectScan-demo" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.defectscan.dto.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="AutoDefectScanDemoApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" temporary="true" nameIsGenerated="true">
+      <module name="AutoDefectScan-demo" />
+      <option name="SPRING_BOOT_MAIN_CLASS" value="com.defectscan.AutoDefectScanDemoApplication" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.defectscan.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="AutoDefectScanParentApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" nameIsGenerated="true">
+      <module name="AutoDefectScan-parent" />
+      <option name="SPRING_BOOT_MAIN_CLASS" value="com.defectscan.autodefectscanparent.AutoDefectScanParentApplication" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Spring Boot.AutoDefectScanDemoApplication" />
+        <item itemvalue="应用程序.Main" />
+        <item itemvalue="Spring Boot.AutoDefectScanDemoApplication" />
+        <item itemvalue="应用程序.Main" />
+      </list>
+    </recent_temporary>
+  </component>
+  <component name="SharedIndexes">
+    <attachedChunks>
+      <set>
+        <option value="bundled-jdk-9823dce3aa75-28b599e66164-intellij.indexing.shared.core-IU-242.23726.103" />
+        <option value="bundled-js-predefined-d6986cc7102b-5c90d61e3bab-JavaScript-IU-242.23726.103" />
+      </set>
+    </attachedChunks>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="应用程序级" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="默认任务">
+      <changelist id="251723c6-774f-4618-b88f-51cf430d0158" name="更改" comment="" />
+      <created>1739948866590</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1739948866590</updated>
+      <workItem from="1739948867539" duration="2512000" />
+      <workItem from="1739960350722" duration="10291000" />
+      <workItem from="1739970673941" duration="7905000" />
+      <workItem from="1740039501204" duration="26985000" />
+      <workItem from="1740308231879" duration="50905000" />
+      <workItem from="1740536412081" duration="27706000" />
+      <workItem from="1740614782398" duration="25107000" />
+      <workItem from="1740722791956" duration="24473000" />
+      <workItem from="1741089663525" duration="8030000" />
+      <workItem from="1741140147374" duration="612000" />
+      <workItem from="1741265983405" duration="3383000" />
+      <workItem from="1741517854645" duration="11501000" />
+      <workItem from="1741573670066" duration="303000" />
+      <workItem from="1741582305710" duration="11000" />
+      <workItem from="1741611463577" duration="5232000" />
+      <workItem from="1741658575599" duration="4000" />
+      <workItem from="1741658690845" duration="8380000" />
+      <workItem from="1741694805657" duration="3910000" />
+    </task>
+    <task id="LOCAL-00001" summary="1">
+      <option name="closed" value="true" />
+      <created>1739973752342</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1739973752342</updated>
+    </task>
+    <task id="LOCAL-00002" summary="1">
+      <option name="closed" value="true" />
+      <created>1739975545075</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1739975545075</updated>
+    </task>
+    <task id="LOCAL-00003" summary="1">
+      <option name="closed" value="true" />
+      <created>1739977988095</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1739977988095</updated>
+    </task>
+    <task id="LOCAL-00004" summary="1">
+      <option name="closed" value="true" />
+      <created>1740146231840</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1740146231840</updated>
+    </task>
+    <task id="LOCAL-00005" summary="1">
+      <option name="closed" value="true" />
+      <created>1740448796386</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1740448796386</updated>
+    </task>
+    <task id="LOCAL-00006" summary="1">
+      <option name="closed" value="true" />
+      <created>1740448815279</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1740448815279</updated>
+    </task>
+    <task id="LOCAL-00007" summary="1">
+      <option name="closed" value="true" />
+      <created>1740649619489</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1740649619489</updated>
+    </task>
+    <task id="LOCAL-00008" summary="1">
+      <option name="closed" value="true" />
+      <created>1741525223747</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1741525223747</updated>
+    </task>
+    <task id="LOCAL-00009" summary="1">
+      <option name="closed" value="true" />
+      <created>1741662526340</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1741662526340</updated>
+    </task>
+    <option name="localTasksCounter" value="10" />
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="1" />
+    <option name="LAST_COMMIT_MESSAGE" value="1" />
+  </component>
+</project>

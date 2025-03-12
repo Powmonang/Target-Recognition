@@ -1,4 +1,6 @@
 D:\user\code\fuchuang\AutoDefectScan-parent\AutoDefectScan-demo\src\main\java\com\defectscan\AutoDefectScanDemoApplication.java
-D:\user\code\fuchuang\AutoDefectScan-parent\AutoDefectScan-demo\src\main\java\com\defectscan\config\OssConfiguration.java
-D:\user\code\fuchuang\AutoDefectScan-parent\AutoDefectScan-demo\src\main\java\com\defectscan\config\WebMvcConfiguration.java
-D:\user\code\fuchuang\AutoDefectScan-parent\AutoDefectScan-demo\src\main\java\com\defectscan\controller\ImageController.java
+D:\user\code\fuchuang\AutoDefectScan-parent\AutoDefectScan-demo\src\main\java\com\defectscan\controller\test.java
+D:\user\code\fuchuang\AutoDefectScan-parent\AutoDefectScan-demo\src\main\java\com\defectscan\controller\user\Login.java
+D:\user\code\fuchuang\AutoDefectScan-parent\AutoDefectScan-demo\src\main\java\com\defectscan\mapper\UserMapper.java
+D:\user\code\fuchuang\AutoDefectScan-parent\AutoDefectScan-demo\src\main\java\com\defectscan\service\impl\UserServiceImpl.java
+D:\user\code\fuchuang\AutoDefectScan-parent\AutoDefectScan-demo\src\main\java\com\defectscan\service\UserService.java

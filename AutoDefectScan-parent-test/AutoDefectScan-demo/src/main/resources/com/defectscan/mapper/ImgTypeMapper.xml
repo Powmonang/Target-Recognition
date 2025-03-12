@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.defectscan.mapper.ImgTypeMapper">
+    <insert id="addImgType" parameterType="com.defectscan.entity.ImgType">
+        insert into imgType values(#{id}, #{type}, #{content}, #{mark})
+    </insert>
+
+
+    <select id="findImgType" parameterType="com.defectscan.entity.ImgType" resultType="com.defectscan.entity.ImgType">
+        select * from imgType
+        <where>
+            <if test="id!=null">
+                id = #{id}
+            </if>
+            <if test="type!=null">
+                and type = #{type}
+            </if>
+        </where>
+    </select>
+</mapper>

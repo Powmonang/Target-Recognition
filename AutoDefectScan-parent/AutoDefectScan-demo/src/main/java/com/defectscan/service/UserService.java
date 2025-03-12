@@ -5,7 +5,7 @@ import com.defectscan.entity.User;
 import java.util.List;
 
 public interface UserService {
-    List<User> findUsers(User a);
+    User findUsers(User a);
     void addUser(User a);
     void changeUser(User a);
 }

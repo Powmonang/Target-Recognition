@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.defectscan.mapper.WarnTypeMapper">
+
+    <select id="findWarnTypes" parameterType="com.defectscan.entity.WarnType" resultType="com.defectscan.entity.WarnType">
+        SELECT * FROM warnType
+        <where>
+            <if test="id!=null">
+                id = #{id}
+            </if>
+        </where>
+    </select>
+</mapper>
