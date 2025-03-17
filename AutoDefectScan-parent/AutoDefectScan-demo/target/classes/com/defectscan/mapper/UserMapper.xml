@@ -4,7 +4,7 @@
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.defectscan.mapper.UserMapper">
     <insert id="addUser" parameterType="com.defectscan.entity.User">
-        INSERT INTO USERS VALUES(#{username}, #{password}, #{userType}, #{name}, #{sex}, #{phone}, #{finalLogin})
+        INSERT INTO users VALUES(#{username}, #{password}, #{userType}, #{name}, #{sex}, #{phone}, #{finalLogin})
     </insert>
     <update id="changeUser" parameterType="com.defectscan.entity.User">
         update users <set>
@@ -35,15 +35,6 @@
             </if>
             <if test="password!=null">
                 and password = #{password}
-            </if>
-            <if test="sex!=null">
-                and sex = #{sex}
-            </if>
-            <if test="finalLogin!=null">
-                and Date(finalLogin) = #{finalLogin}
-            </if>
-            <if test="name!=null">
-                and name = #{name}
             </if>
         </where>
     </select>
