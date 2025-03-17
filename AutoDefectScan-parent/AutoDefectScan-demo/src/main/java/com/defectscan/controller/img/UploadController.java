@@ -5,7 +5,7 @@ import com.defectscan.entity.Img;
 import com.defectscan.result.Result;
 import com.defectscan.service.ImgService;
 import com.defectscan.tools.AliOssTool;
-import com.defectscan.tools.UploadImgTool;
+import com.defectscan.tools.ImgTool;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import lombok.extern.slf4j.Slf4j;
@@ -47,7 +47,7 @@ public class UploadController {
     ImgService imgService;
 
     @Autowired
-    UploadImgTool uploadImgTool;
+    ImgTool uploadImgTool;
 
 
     /**
@@ -94,6 +94,9 @@ public class UploadController {
             try {
                 //将临时文件夹图片截取至本地文件夹
                 String imgTargetUrl = uploadImgTool.uploadImgToLocal(tempUrl,tempDir,targetDir);
+                if(imgTargetUrl == null){
+                    throw new IOException("找不到该图片");
+                }
                 // 使用 Paths.get() 获取 Path 对象
                 Path path = Paths.get(imgTargetUrl);
                 // 获取文件名（包含扩展名）
@@ -107,9 +110,10 @@ public class UploadController {
                 // 批量写入数据库
                 imgService.addImg(image);
                 request.getUrl().set(i, imgTargetUrl);
+
             } catch (IOException e) {
-                log.error("上传失败: " + e.toString());
-                return Result.error("上传失败：" + e.toString());
+                log.error("上传失败: " + e);
+                return Result.error("上传失败：" + e);
             }
         }
         log.info("所有图片上传成功,新地址为：{}",request.getUrl());

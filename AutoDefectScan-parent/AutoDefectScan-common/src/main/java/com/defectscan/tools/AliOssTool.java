@@ -62,4 +62,21 @@ public class AliOssTool {
 
         return url;
     }
+
+    /**
+     * 删除图片
+     * @param objectName
+     */
+    public boolean deleteFile(String objectName) {
+        OSS ossClient = new OSSClientBuilder().build(endpoint, accessKeyId, accessKeySecret);
+        try{
+            ossClient.deleteObject(bucketName, objectName);
+            ossClient.shutdown();
+            log.info("云端图片：{} 删除成功", objectName);
+            return true;
+        } catch (OSSException oe) {
+            log.info("云端图片删除失败：{}", oe.getMessage());
+            return false;
+        }
+    }
 }

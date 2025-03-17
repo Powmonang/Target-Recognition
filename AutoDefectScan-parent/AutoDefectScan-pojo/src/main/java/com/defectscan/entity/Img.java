@@ -4,6 +4,8 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.time.LocalDateTime;
+
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
@@ -17,16 +19,17 @@ public class Img {
 
     private String detectTime;          // 模型检测时间
     private String defectTagId;         // 图片缺陷类型id,多种缺陷由逗号分隔
-    private int defectCount;            // 图片缺陷数量. -1：未判断 0：无缺陷
-    private float confidenceLevel;      // 图片检测置信度
+    private String defectCount;            // 图片缺陷数量. -1：未判断 0：无缺陷
+    private String confidenceLevel;      // 图片检测置信度
 
-    private String createTime;          // 创建时间
-    private String updateTime;          // 修改时间
+    private LocalDateTime createTime;          // 创建时间
+    private LocalDateTime updateTime;          // 修改时间
     private String createUser;          // 创建人
     private String updateUser;          // 修改人
     private String mark;                // 备注
-    private int isOpe;               // 是否被标注了
-    private int isShow;                // 软删除，是否展示;
+    private String isDetect;               // 是否检测
+    private String isOpe;                  // 是否被标注了
+    private String isShow;                 // 软删除，是否展示;
 }
 
 //    // 非数据库字段

@@ -1,7 +1,7 @@
 package com.defectscan.controller.user;
 
-import com.defectscan.entity.Result;
 import com.defectscan.entity.User;
+import com.defectscan.result.Result;
 import com.defectscan.service.UserService;
 import com.defectscan.tools.JwtTool;
 import com.defectscan.tools.SafeTool;
@@ -53,7 +53,7 @@ public class LoginController {
                 userService.changeUser(changeTemp);
                 // 创建用户信息映射MAP 用于创建Token
                 Map<String, Object>userInfo = new HashMap<>();
-                userInfo.put("id", find.getUsername());
+                userInfo.put("username", find.getUsername());
                 userInfo.put("password", find.getPassword());
                 userInfo.put("userType", find.getUserType()); //用户权限
                 // 发放Token于前端
@@ -76,35 +76,21 @@ public class LoginController {
     @PostMapping("/register")
     public Result register(@RequestBody User request)
     {
-        //数据库主键重复性检查交予handle处理
-        //获取原始密码
-        String ps = request.getPassword();
-        String hashPs = safeTool.hashPassword(ps);
-        //进行加密操作 再添加
-        request.setPassword(hashPs);
-        userService.addUser(request);
-        logger.info(request.getUsername()+":注册成功");
-        return Result.success("注册成功", null);
-    }
-
-
-    //解析Jwt
-    @PostMapping("/parseJwt")
-    public Result parseJwt(@RequestBody User request)
-    {
-        logger.info("请求解析Jwt:" + request.toString());
-        String Jwt = request.getUsername();
-        try {
-            Claims map = jwtTool.parseJwt(Jwt);
-            User result = new User();
-            result.setUsername(map.get("id").toString());
-            result.setPassword(map.get("ps").toString());
-            result.setUserType(map.get("type").toString());
-            return Result.success(result);
-        }catch (Exception e){
-            logger.info("Jwt解析错误");
-            return Result.error("Jwt解析错误");
+        try{
+            //获取原始密码
+            String ps = request.getPassword();
+            String hashPs = safeTool.hashPassword(ps);
+            //进行加密操作 再添加
+            request.setPassword(hashPs);
+            userService.addUser(request);
+            logger.info(request.getUsername()+":注册成功");
+            return Result.success("注册成功", null);
+        }catch(Exception e){
+            e.printStackTrace();
+            logger.error(e.getMessage());
+            return Result.error("用户名已存在");
         }
-
     }
+
+
 }

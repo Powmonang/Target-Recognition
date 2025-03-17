@@ -1,9 +1,11 @@
 package com.defectscan.tools;
 
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import org.springframework.web.multipart.MultipartFile;
 
+import java.io.File;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
@@ -14,10 +16,13 @@ import java.util.UUID;
 
 @Slf4j
 @Component
-public class UploadImgTool {
+public class ImgTool {
 
     // 获取当前工作目录（应用程序根目录）
     private final String currentDir = System.getProperty("user.dir");
+
+    @Autowired
+    AliOssTool aliOssTool;
 
     public Path uploadImgToTemp(MultipartFile image,String tempDir) throws IOException {
         String originalFileName = image.getOriginalFilename();
@@ -74,6 +79,37 @@ public class UploadImgTool {
         } catch (IOException e) {
             log.error("上传失败: " + e.toString());
             return null;
+        }
+    }
+
+
+    public boolean deleteLocalImg(String localDir) throws IOException {
+        // 删除本地文件
+        File localFile = new File(localDir);
+        if (localFile.exists()) {
+            localFile.delete();
+            log.info("已找到文件：{}，删除成功", localFile);
+            return true;
+        }else {
+            return false;
+        }
+    }
+
+    /**
+     * 删除云端图片
+     * @param aliyunUrl
+     * @return
+     * @throws IOException
+     */
+    public boolean deleteAliyunImg(String aliyunUrl) throws IOException {
+        // 使用 Paths.get() 获取 Path 对象
+        Path path = Paths.get(aliyunUrl);
+        // 获取文件名（包含扩展名）
+        String objectName = path.getFileName().toString();
+        if(aliOssTool.deleteFile(objectName)){
+            return true;
+        }else {
+            return false;
         }
     }
 

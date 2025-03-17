@@ -4,7 +4,7 @@ package com.defectscan.controller.ai;
 import com.defectscan.dto.UrlRequestDTO;
 import com.defectscan.entity.ReturnDetectData;
 import com.defectscan.result.Result;
-import com.defectscan.service.ImgDetectService;
+import com.defectscan.service.ImgService;
 import io.swagger.annotations.Api;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -18,14 +18,14 @@ import org.springframework.web.bind.annotation.*;
 public class ImgDetectController {
 
     @Autowired
-    private ImgDetectService aiDetectService;
+    private ImgService imgService;
 
     //@Log
     @PostMapping("/detect")
     public Result detect(@RequestBody UrlRequestDTO request){
         log.info("请求模型推理");
         try {
-            ReturnDetectData returnDetectData = aiDetectService.detectImages(request);
+            ReturnDetectData returnDetectData = imgService.detectImages(request);
             if(returnDetectData == null){
                 return Result.error("返回结果为空");
             }

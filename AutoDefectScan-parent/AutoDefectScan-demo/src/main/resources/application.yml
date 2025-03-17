@@ -35,7 +35,8 @@ aliyun:
     accessKeyId: LTAI5tKMqMCizzE3t6imnZKZ
     accessKeySecret: lZO92qFCWXvhWXw6o7D6yDDWHtlbFF
     bucketName: autodefectscan-demo
-
+pagehelper:
+  helper-dialect: mysql
 
 
 common:
