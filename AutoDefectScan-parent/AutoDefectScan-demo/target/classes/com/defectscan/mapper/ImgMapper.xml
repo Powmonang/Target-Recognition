@@ -9,9 +9,9 @@
         <id property="id" column="id"/>
         <result property="imageName" column="imageName"/>
         <result property="originalLocalUrl" column="originalLocalUrl"/>
-        <result property="originalAliyunUrl" column="originalAliyunUrl"/>
+        <result property="originalBackupUrl" column="originalBackupUrl"/>
         <result property="detectLocalUrl" column="detectLocalUrl"/>
-        <result property="detectAliyunUrl" column="detectAliyunUrl"/>
+        <result property="detectBackupUrl" column="detectBackupUrl"/>
         <result property="detectTime" column="detectTime"/>
         <result property="defectTagId" column="defectTagId"/>
         <result property="defectCount" column="defectCount"/>
@@ -23,23 +23,24 @@
         <result property="mark" column="mark"/>
         <result property="isOpe" column="isOpe"/>
         <result property="isShow" column="isShow"/>
+        <result property="isBackup" column="isBackup"/>
     </resultMap>
 
 <!--    添加图片信息-->
     <insert id="addImg" parameterType="com.defectscan.entity.Img">
         INSERT INTO imgs (
-            imageName, originalLocalUrl, originalAliyunUrl,
-            detectLocalUrl, detectAliyunUrl, detectTime,
+            imageName, originalLocalUrl, originalBackupUrl,
+            detectLocalUrl, detectBackupUrl, detectTime,
             defectTagId, defectCount, confidenceLevel,
             createTime, updateTime, createUser,
-            updateUser, mark, isOpe, isShow
+            updateUser, mark, isOpe, isShow, isBackup
         )
         VALUES (
-                   #{imageName}, #{originalLocalUrl}, #{originalAliyunUrl},
-                   #{detectLocalUrl}, #{detectAliyunUrl}, #{detectTime},
+                   #{imageName}, #{originalLocalUrl}, #{originalBackupUrl},
+                   #{detectLocalUrl}, #{detectBackupUrl}, #{detectTime},
                    #{defectTagId}, #{defectCount}, #{confidenceLevel},
                    #{createTime}, #{updateTime}, #{createUser},
-                   #{updateUser}, #{mark}, #{isOpe}, #{isShow}
+                   #{updateUser}, #{mark}, #{isOpe}, #{isShow}, #{isBackup}
                );
     </insert>
 
@@ -51,8 +52,8 @@
             <if test="detectLocalUrl != null and detectLocalUrl != ''">
                 detectLocalUrl = #{detectLocalUrl},
             </if>
-            <if test="detectAliyunUrl != null and detectAliyunUrl != ''">
-                detectAliyunUrl = #{detectAliyunUrl},
+            <if test="detectBackupUrl != null and detectBackupUrl != ''">
+                detectBackupUrl = #{detectBackupUrl},
             </if>
             <if test="detectTime != null and detectTime != ''">
                 detectTime = #{detectTime},
@@ -78,6 +79,9 @@
             <if test="isOpe != null and isOpe != ''">
                 isOpe = #{isOpe}
             </if>
+            <if test="isBackup != null and isBackup != ''">
+                isBackup = #{isBackup}
+            </if>
         </trim>
         WHERE id = #{id} AND imageName = #{imageName}
     </update>
@@ -91,8 +95,8 @@
             <if test="originalLocalUrl != null and originalLocalUrl != ''">
                 and originalLocalUrl = #{url}
             </if>
-            <if test="originalAliyunUrl != null and originalAliyunUrl != ''">
-                or originalAliyunUrl = #{url}
+            <if test="originalBackupUrl != null and originalBackupUrl != ''">
+                or originalBackupUrl = #{url}
             </if>
         </where>
     </select>
@@ -128,6 +132,9 @@
             <if test="isOpe != null and isOpe != ''">
                 AND isOpe = #{isOpe}
             </if>
+            <if test="isBackup != null and isBackup != ''">
+                AND isBackup = #{isBackup}
+            </if>
         </where>
     </select>
 <!--    查询当前页数据列表-->
@@ -159,6 +166,9 @@
             <if test="a.isOpe != null and a.isOpe != ''">
                 AND isOpe = #{a.isOpe}
             </if>
+            <if test="a.isBackup != null and a.isBackup != ''">
+                AND isBackup = #{a.isBackup}
+            </if>
         </where>
         limit #{startIndex}, #{pageSize}
     </select>
@@ -170,6 +180,12 @@
         </where>
     </select>
 
+    <select id="isExist" parameterType="int" resultType="int">
+        select count(*) from imgs
+        <where>
+            id = #{id}
+        </where>
+    </select>
 
 
     <update id="updateImg" parameterType="com.defectscan.entity.Img">
@@ -181,14 +197,14 @@
             <if test="originalLocalUrl != null and originalLocalUrl != ''">
                 originalLocalUrl = #{originalLocalUrl},
             </if>
-            <if test="originalAliyunUrl != null and originalAliyunUrl != ''">
-                originalAliyunUrl = #{originalAliyunUrl},
+            <if test="originalBackupUrl != null and originalBackupUrl != ''">
+                originalBackupUrl = #{originalBackupUrl},
             </if>
             <if test="detectLocalUrl != null and detectLocalUrl != ''">
                 detectLocalUrl = #{detectLocalUrl},
             </if>
-            <if test="detectAliyunUrl != null and detectAliyunUrl != ''">
-                detectAliyunUrl = #{detectAliyunUrl},
+            <if test="detectBackupUrl != null and detectBackupUrl != ''">
+                detectBackupUrl = #{detectBackupUrl},
             </if>
             <if test="detectTime != null and detectTime != ''">
                 detectTime = #{detectTime},
@@ -225,6 +241,9 @@
             </if>
             <if test="isShow != null and isShow != ''">
                 isShow = #{isShow},
+            </if>
+            <if test="isBackup != null and isBackup != ''">
+                isBackup = #{isBackup},
             </if>
         </trim>
         WHERE id = #{id}

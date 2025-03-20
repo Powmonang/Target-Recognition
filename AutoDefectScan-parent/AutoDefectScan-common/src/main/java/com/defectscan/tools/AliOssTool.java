@@ -1,15 +1,16 @@
 package com.defectscan.tools;
 
-import com.aliyun.oss.ClientException;
-import com.aliyun.oss.OSS;
-import com.aliyun.oss.OSSClientBuilder;
-import com.aliyun.oss.OSSException;
+import com.aliyun.oss.*;
+import com.aliyun.oss.model.GetObjectRequest;
+import jakarta.annotation.PostConstruct;
+import jakarta.annotation.PreDestroy;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.extern.slf4j.Slf4j;
 
 
 import java.io.ByteArrayInputStream;
+import java.io.File;
 
 @Data
 @AllArgsConstructor
@@ -20,6 +21,7 @@ public class AliOssTool {
     private String accessKeyId;
     private String accessKeySecret;
     private String bucketName;
+
 
     /**
      * 文件上传
@@ -79,4 +81,26 @@ public class AliOssTool {
             return false;
         }
     }
+
+    public void restoreImage(String originalUrl,String backupUrl) {
+        OSS ossClient = new OSSClientBuilder().build(endpoint, accessKeyId, accessKeySecret);
+        try {
+            // 从 OSS 下载文件到本地
+            File file = new File(backupUrl);
+            String fileName = file.getName();
+            ossClient.getObject(new GetObjectRequest(bucketName, fileName), new File(originalUrl));
+            System.out.println("图片恢复成功，路径：" + originalUrl);
+        } catch (Exception e) {
+            System.err.println("图片恢复失败：" + e.getMessage());
+        } finally {
+            // 关闭 OSSClient
+            ossClient.shutdown();
+        }
+    }
+
+
+
+
+
+
 }

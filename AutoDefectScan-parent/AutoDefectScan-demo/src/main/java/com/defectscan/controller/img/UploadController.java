@@ -1,6 +1,6 @@
 package com.defectscan.controller.img;
 
-import com.defectscan.dto.UrlRequestDTO;
+import com.defectscan.dto.ImgMapRequestDTO;
 import com.defectscan.entity.Img;
 import com.defectscan.result.Result;
 import com.defectscan.service.ImgService;
@@ -12,13 +12,16 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.client.RestTemplate;
 import org.springframework.web.multipart.MultipartFile;
 
 import java.io.IOException;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import static com.google.common.io.Files.getFileExtension;
 
@@ -48,6 +51,8 @@ public class UploadController {
 
     @Autowired
     ImgTool uploadImgTool;
+    @Autowired
+    private RestTemplate restTemplate;
 
 
     /**
@@ -59,36 +64,39 @@ public class UploadController {
     //@Log
     @PostMapping("/images_local")
     @ApiOperation("上传图片(本地存储)")
-    public Result<List<String>> uploadImages_local(@RequestParam("images") List<MultipartFile> images) throws IOException {
+    public Result<Map<String,String>> uploadImages_local(@RequestParam("images") List<MultipartFile> images) throws IOException {
         log.info("开始上传图片(本地), 上传的图片数量: {}", images.size());
         if (images == null || images.isEmpty()) {
             log.info("图像上传为空");
             return Result.error("图像上传为空");
         } else {
-            List<String> uploadedFilePaths = new ArrayList<>();
+            Map<String,String> map = new HashMap<>();
             // 遍历所有上传的图片
             for (MultipartFile image : images) {
                 try {
                     // 将图片存入本地临时文件夹
-                    Path filePath = uploadImgTool.uploadImgToTemp(image, tempDir);
-                    log.info("图片上传本地成功，临时存储地址为：{}", filePath);
-                    uploadedFilePaths.add(filePath.toString());
+                    Map.Entry<String, Path> pair = uploadImgTool.uploadImgToTemp(image, tempDir);
+                    map.put(pair.getKey(), pair.getValue().toString());
+                    log.info("图片上传本地成功，临时存储地址为：{}", pair.getValue());
                 } catch (Exception e) {
                     log.info("图片上传失败，{}", e.toString());
-                    return Result.error("图片上传失败：" + e.toString());
+                    return Result.error("图片上传失败：" + e);
                 }
             }
             // 返回所有上传文件的路径
-            return Result.success(uploadedFilePaths);
+            return Result.success(map);
         }
     }
 
     //@Log
     @PostMapping("/sureUpload")
-    public Result sureUpLoad(@RequestBody UrlRequestDTO request) throws IOException {
-        for (int i = 0; i < request.getUrl().size(); i++) {
-            String tempUrl = request.getUrl().get(i);
-            log.info("确认上传图片:{}" ,tempUrl);
+    public Result sureUpLoad(@RequestBody ImgMapRequestDTO requestDTO) throws IOException {
+        for (String key : requestDTO.getMap().keySet()) {
+            // 文件临时保存路径
+            String originalFileName = key;
+            // 文件原始名
+            String tempUrl = requestDTO.getMap().get(key);
+            log.info("确认上传图片:{},保存路径：{}" ,originalFileName,tempUrl);
             // 定义源图片
             Img image = new Img();
             try {
@@ -97,27 +105,22 @@ public class UploadController {
                 if(imgTargetUrl == null){
                     throw new IOException("找不到该图片");
                 }
-                // 使用 Paths.get() 获取 Path 对象
-                Path path = Paths.get(imgTargetUrl);
-                // 获取文件名（包含扩展名）
-                String fileName = path.getFileName().toString();
-
 
                 // 设置图片名称、本地路径
-                image.setImageName(fileName);
+                image.setImageName(originalFileName);
                 image.setOriginalLocalUrl(imgTargetUrl);
 
                 // 批量写入数据库
                 imgService.addImg(image);
-                request.getUrl().set(i, imgTargetUrl);
+                // 修改map的路劲值
+                requestDTO.getMap().replace(key,imgTargetUrl);
 
             } catch (IOException e) {
                 log.error("上传失败: " + e);
                 return Result.error("上传失败：" + e);
             }
         }
-        log.info("所有图片上传成功,新地址为：{}",request.getUrl());
-        return Result.success(request.getUrl());
+        return Result.success(requestDTO.getMap().values());
     }
 
 
@@ -134,14 +137,16 @@ public class UploadController {
             // 遍历上传每个图片
             for (MultipartFile image : images) {
                 //先上传临时文件夹
-                Path filePath = uploadImgTool.uploadImgToTemp(image, tempDir);
+                Map.Entry<String, Path> pair = uploadImgTool.uploadImgToTemp(image, tempDir);
                 //截取至本地文件夹
-                String imgTargetUrl = uploadImgTool.uploadImgToLocal(filePath.toString(),tempDir,targetDir);
+                String imgTargetUrl = uploadImgTool.uploadImgToLocal(pair.getValue().toString(),tempDir,targetDir);
 
                 // 使用 Paths.get() 获取 Path 对象
                 Path path = Paths.get(imgTargetUrl);
                 // 获取文件名（包含扩展名）
                 String fileName = path.getFileName().toString();
+                // 获取原始文件名
+                String originalFileName = pair.getKey();
                 // 获取文件扩展名（从文件名中提取）
                 String fileExtension = getFileExtension(fileName);
                 // 获取文件所在的目录路径
@@ -156,8 +161,8 @@ public class UploadController {
                 // 定义源图片
                 Img img = new Img();
                 img.setOriginalLocalUrl(imgTargetUrl);
-                img.setOriginalAliyunUrl(url);
-                img.setImageName(fileName);
+                img.setOriginalBackupUrl(url);
+                img.setImageName(originalFileName);
                 imgService.addImg(img);  // 批量写入数据库
             }
             return Result.success(urls);

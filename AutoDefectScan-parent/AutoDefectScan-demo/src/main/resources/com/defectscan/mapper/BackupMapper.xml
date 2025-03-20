@@ -1,0 +1,172 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.defectscan.mapper.BackupMapper">
+
+    <!-- 定义结果映射 -->
+    <resultMap id="ImgResultMap" type="com.defectscan.entity.Img">
+        <id property="id" column="imgId"/>
+        <result property="imageName" column="imageName"/>
+        <result property="originalLocalUrl" column="originalLocalUrl"/>
+        <result property="originalBackupUrl" column="originalBackupUrl"/>
+        <result property="detectLocalUrl" column="detectLocalUrl"/>
+        <result property="detectBackupUrl" column="detectBackupUrl"/>
+        <result property="detectTime" column="detectTime"/>
+        <result property="defectTagId" column="defectTagId"/>
+        <result property="defectCount" column="defectCount"/>
+        <result property="confidenceLevel" column="confidenceLevel"/>
+        <result property="createTime" column="createTime"/>
+        <result property="updateTime" column="updateTime"/>
+        <result property="createUser" column="createUser"/>
+        <result property="updateUser" column="updateUser"/>
+        <result property="mark" column="mark"/>
+        <result property="isDetect" column="isDetect"/>
+        <result property="isOpe" column="isOpe"/>
+        <result property="isShow" column="isShow"/>
+        <result property="isBackup" column="isBackup"/>
+    </resultMap>
+
+
+    <select id="findByImgId" resultType="int">
+        select count(*) from backup_record
+        <where>
+            imgId = #{imgId} and backupType = #{backupType};
+        </where>
+    </select>
+
+    <!--    更新备份图片信息-->
+    <update id="updateBackup">
+        update backup_record
+        <trim prefix="SET" suffixOverrides=",">
+            <if test="a.imageName != null and a.imageName != ''">
+                imageName = #{a.imageName},
+            </if>
+<!--            <if test="a.originalLocalUrl != null and a.originalLocalUrl != ''">-->
+<!--                originalLocalUrl = #{a.originalLocalUrl},-->
+<!--            </if>-->
+<!--            <if test="a.originalBackupUrl != null and a.originalBackupUrl != ''">-->
+<!--                originalBackupUrl = #{a.originalBackupUrl},-->
+<!--            </if>-->
+<!--            <if test="a.detectLocalUrl != null and a.detectLocalUrl != ''">-->
+<!--                detectLocalUrl = #{a.detectLocalUrl},-->
+<!--            </if>-->
+<!--            <if test="a.detectBackupUrl != null and a.detectBackupUrl != ''">-->
+<!--                detectBackupUrl = #{a.detectBackupUrl},-->
+<!--            </if>-->
+            <if test="a.detectTime != null and a.detectTime != ''">
+                detectTime = #{a.detectTime},
+            </if>
+            <if test="a.defectTagId != null and a.defectTagId != ''">
+                defectTagId = #{a.defectTagId},
+            </if>
+            <if test="a.defectCount != null and a.defectCount != ''">
+                defectCount = #{a.defectCount},
+            </if>
+            <if test="a.confidenceLevel != null and a.confidenceLevel != ''">
+                confidenceLevel = #{a.confidenceLevel},
+            </if>
+            <if test="a.createTime != null">
+                createTime = #{a.createTime},
+            </if>
+            <if test="a.updateTime != null">
+                updateTime = #{a.updateTime},
+            </if>
+            <if test="a.createUser != null and a.createUser != ''">
+                createUser = #{a.createUser},
+            </if>
+            <if test="a.updateUser != null and a.updateUser != ''">
+                updateUser = #{a.updateUser},
+            </if>
+            <if test="a.mark != null and a.mark != ''">
+                mark = #{a.mark},
+            </if>
+            <if test="a.isOpe != null and a.isOpe != ''">
+                isOpe = #{a.isOpe},
+            </if>
+            <if test="a.isShow != null and a.isShow != ''">
+                isShow = #{a.isShow},
+            </if>
+            <if test="a.isBackup != null and a.isBackup != ''">
+                isBackup = #{a.isBackup}
+            </if>
+        </trim>
+        where imgId = #{a.id} and backupType = #{backupType};
+    </update>
+
+
+    <!--    添加备份图片信息-->
+    <insert id="addBackup">
+        INSERT INTO backup_record (
+            imgId, backupType, imageName, originalLocalUrl, originalBackupUrl,
+            detectLocalUrl, detectBackupUrl, detectTime,
+            defectTagId, defectCount, confidenceLevel,
+            createTime, updateTime, createUser,
+            updateUser, mark, isOpe, isShow, isBackup
+        )
+        VALUES (
+                   #{a.id}, #{backupType}, #{a.imageName}, #{a.originalLocalUrl}, #{a.originalBackupUrl},
+                   #{a.detectLocalUrl}, #{a.detectBackupUrl}, #{a.detectTime},
+                   #{a.defectTagId}, #{a.defectCount}, #{a.confidenceLevel},
+                   #{a.createTime}, #{a.updateTime}, #{a.createUser},
+                   #{a.updateUser}, #{a.mark}, #{a.isOpe}, #{a.isShow}, #{a.isBackup}
+               );
+    </insert>
+
+    <update id="setIsBackup" parameterType="com.defectscan.entity.Img">
+        update imgs
+        <set>
+            <if test="isBackup != null and isBackup != ''">
+                isBackup = #{isBackup}
+            </if>
+        </set>
+        where id = #{id}
+    </update>
+
+    <!-- 根据 backupType 查询 Img 列表 -->
+    <select id="findLocalBackup" resultMap="ImgResultMap" parameterType="String">
+        select
+            imgId,
+            imageName,
+            originalLocalUrl,
+            originalBackupUrl,
+            detectLocalUrl,
+            detectBackupUrl,
+            detectTime,
+            defectTagId,
+            defectCount,
+            confidenceLevel,
+            createTime,
+            updateTime,
+            createUser,
+            updateUser,
+            mark,
+            isDetect,
+            isOpe,
+            isShow,
+            isBackup
+        from
+            backup_record
+        where
+            backupType = #{backupType}
+    </select>
+
+<!--    恢复图片信息，包括id值的恢复-->
+    <insert id="restoreImg" parameterType="com.defectscan.entity.Img">
+        INSERT INTO imgs (
+            id, imageName, originalLocalUrl, originalBackupUrl,
+            detectLocalUrl, detectBackupUrl, detectTime,
+            defectTagId, defectCount, confidenceLevel,
+            createTime, updateTime, createUser,
+            updateUser, mark, isOpe, isShow, isBackup
+        )
+        VALUES (
+                   #{id}, #{imageName}, #{originalLocalUrl}, #{originalBackupUrl},
+                   #{detectLocalUrl}, #{detectBackupUrl}, #{detectTime},
+                   #{defectTagId}, #{defectCount}, #{confidenceLevel},
+                   #{createTime}, #{updateTime}, #{createUser},
+                   #{updateUser}, #{mark}, #{isOpe}, #{isShow}, #{isBackup}
+               );
+    </insert>
+
+</mapper>

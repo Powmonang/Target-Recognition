@@ -22,6 +22,8 @@ public interface ImgMapper {
 
     Img findImgById(Long id);
 
+    int isExist(int id);
+
     // 编辑图片
     void updateImg(Img img);
 

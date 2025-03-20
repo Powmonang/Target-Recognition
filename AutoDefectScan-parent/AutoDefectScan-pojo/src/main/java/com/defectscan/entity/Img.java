@@ -13,9 +13,9 @@ public class Img {
     private int id;                     // 文件id
     private String imageName;           // 文件名
     private String originalLocalUrl;    // 源文件本地url
-    private String originalAliyunUrl;   // 源文件云端url
+    private String originalBackupUrl;   // 源文件云端url
     private String detectLocalUrl;      // 新文件本地url
-    private String detectAliyunUrl;     // 新文件阿里云url
+    private String detectBackupUrl;     // 新文件阿里云url
 
     private String detectTime;          // 模型检测时间
     private String defectTagId;         // 图片缺陷类型id,多种缺陷由逗号分隔
@@ -29,7 +29,8 @@ public class Img {
     private String mark;                // 备注
     private String isDetect;               // 是否检测
     private String isOpe;                  // 是否被标注了
-    private String isShow;                 // 软删除，是否展示;
+    private String isShow;                 // 是否展示;
+    private String isBackup;                // 是否备份。
 }
 
 //    // 非数据库字段

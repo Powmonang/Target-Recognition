@@ -43,7 +43,7 @@ common:
   tools:
     safeFactor: 6         # 工作因子（work factor），可以根据需要调整，数值越大，计算越慢，但安全性越高
     jwtKey: defectscan    # 令牌密钥key
-    jwtExpire: 72000  # 持续时间
+    jwtExpire: 2678400   # 持续时间(秒）一个月
 
 
 

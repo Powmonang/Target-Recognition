@@ -52,6 +52,10 @@ public class ImgServiceImpl implements ImgService {
         a.setUpdateUser(BaseContext.getCurrentUsername());
         a.setCreateTime(LocalDateTime.now());
         a.setUpdateTime(LocalDateTime.now());
+        a.setIsDetect("0");
+        a.setIsOpe("0");
+        a.setIsShow("0");
+        a.setIsBackup("0");
         imgMapper.addImg(a);
     }
 
@@ -67,8 +71,8 @@ public class ImgServiceImpl implements ImgService {
         List<Img> imgList = new ArrayList<>();
         for (int i = 0; i < request.getUrl().size(); i++) {
             // 根据url从数据库中获取到对应图片的数据
-            // 已有值：       id imageName originalLocalUrl (originalAliyunUrl) createTime updateTime createUser updateUser
-            // 需返回更新值：  detectLocalUrl detectAliyunUrl detectTime defectTagId defectCount confidenceLevel isPpe
+            // 已有值：       id imageName originalLocalUrl (originalBackupUrl) createTime updateTime createUser updateUser
+            // 需返回更新值：  detectLocalUrl detectBackupUrl detectTime defectTagId defectCount confidenceLevel isPpe
             Img findImg = imgMapper.selectImgByUrl(request.getUrl().get(i));
             imgList.add(findImg);
         }
@@ -140,9 +144,9 @@ public class ImgServiceImpl implements ImgService {
         if (img != null) {
             imgMapper.deleteImg(img);
             String originalLocalUrl = img.getOriginalLocalUrl();
-            String originalAliyunUrl = img.getOriginalAliyunUrl();
+            //String originalBackupUrl = img.getOriginalBackupUrl();
             String detectLocalUrl = img.getDetectLocalUrl();
-            String detectAliyunUrl = img.getDetectAliyunUrl();
+            //String detectBackupUrl = img.getDetectBackupUrl();
             if(originalLocalUrl != null){
                 try {
                     imgTool.deleteLocalImg(originalLocalUrl);
@@ -151,15 +155,15 @@ public class ImgServiceImpl implements ImgService {
                     throw new RuntimeException(e);
                 }
             }
-            // 删除云端源图片
-            if(originalAliyunUrl != null){
-                try {
-                    imgTool.deleteLocalImg(originalAliyunUrl);
-                } catch (IOException e) {
-                    log.info("删除错误：{}",originalAliyunUrl);
-                    throw new RuntimeException(e);
-                }
-            }
+//            // 删除云端源图片
+//            if(originalBackupUrl != null){
+//                try {
+//                    imgTool.deleteLocalImg(originalBackupUrl);
+//                } catch (IOException e) {
+//                    log.info("删除错误：{}",originalBackupUrl);
+//                    throw new RuntimeException(e);
+//                }
+//            }
             // 删除本地检测图片
             if(detectLocalUrl != null){
                 try {
@@ -169,15 +173,15 @@ public class ImgServiceImpl implements ImgService {
                     throw new RuntimeException(e);
                 }
             }
-            // 删除云端检测图片
-            if(detectAliyunUrl != null){
-                try {
-                    imgTool.deleteLocalImg(detectAliyunUrl);
-                } catch (IOException e) {
-                    log.info("删除错误：{}",detectAliyunUrl);
-                    throw new RuntimeException(e);
-                }
-            }
+//            // 删除云端检测图片
+//            if(detectBackupUrl != null){
+//                try {
+//                    imgTool.deleteLocalImg(detectBackupUrl);
+//                } catch (IOException e) {
+//                    log.info("删除错误：{}",detectBackupUrl);
+//                    throw new RuntimeException(e);
+//                }
+//            }
             return true;
         }
         return false;
