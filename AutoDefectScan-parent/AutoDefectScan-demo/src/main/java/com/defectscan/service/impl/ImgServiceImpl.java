@@ -1,14 +1,20 @@
 package com.defectscan.service.impl;
 
 import com.defectscan.constant.BaseContext;
-import com.defectscan.dto.ImgPageQueryDTO;
-import com.defectscan.dto.UrlRequestDTO;
+import com.defectscan.constant.DefectType;
+import com.defectscan.dto.AiDetectDTO;
+import com.defectscan.vo.AiDetectReturnVO;
+import com.defectscan.vo.ImgPageQueryVO;
+import com.defectscan.entity.DefectInfo;
 import com.defectscan.entity.Img;
 import com.defectscan.entity.ReturnDetectData;
+import com.defectscan.mapper.ImgDefectMapMapper;
 import com.defectscan.mapper.ImgMapper;
 import com.defectscan.result.PageResult;
 import com.defectscan.service.ImgService;
+import com.defectscan.tools.AliOssTool;
 import com.defectscan.tools.ImgTool;
+import com.defectscan.vo.ReturnPageImgVO;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
@@ -21,10 +27,9 @@ import org.springframework.web.client.RestTemplate;
 
 import java.io.IOException;
 import java.time.LocalDateTime;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
+import java.util.stream.Collectors;
+import static com.defectscan.constant.DefectType.getDefectTypeMap;
 
 @Component
 @Slf4j
@@ -40,7 +45,13 @@ public class ImgServiceImpl implements ImgService {
     ImgMapper imgMapper;
 
     @Autowired
+    ImgDefectMapMapper imgDefectMapMapper;
+
+    @Autowired
     ImgTool imgTool;
+
+    @Autowired
+    AliOssTool aliOssTool;
 
     /**
      * 添加（上传）图片
@@ -65,16 +76,14 @@ public class ImgServiceImpl implements ImgService {
      * @return
      */
     @Override
-    public ReturnDetectData detectImages(UrlRequestDTO request) {
+    public ReturnDetectData detectImages(List<String> request) {
 
         // 定义识别后的图片
-        List<Img> imgList = new ArrayList<>();
-        for (int i = 0; i < request.getUrl().size(); i++) {
+        List<AiDetectDTO> imgList = new ArrayList<>();
+        for (int i = 0; i < request.size(); i++) {
             // 根据url从数据库中获取到对应图片的数据
-            // 已有值：       id imageName originalLocalUrl (originalBackupUrl) createTime updateTime createUser updateUser
-            // 需返回更新值：  detectLocalUrl detectBackupUrl detectTime defectTagId defectCount confidenceLevel isPpe
-            Img findImg = imgMapper.selectImgByUrl(request.getUrl().get(i));
-            imgList.add(findImg);
+            AiDetectDTO aiDetectDto = imgMapper.selectAiDetectDTOByUrl(request.get(i));
+            imgList.add(aiDetectDto);
         }
         // 调用 AI 检测服务
         try {
@@ -92,11 +101,40 @@ public class ImgServiceImpl implements ImgService {
             //将新地址写入检测后数据库
             if (returnDetectData != null) {
                 // 检测完之后更新 updateTime  updateUser  isDetect
-                for(int i = 0; i < returnDetectData.getDetectImgList().size(); i++) {
-                    returnDetectData.getDetectImgList().get(i).setUpdateTime(LocalDateTime.now());  // 检测（更新）时间
-                    returnDetectData.getDetectImgList().get(i).setUpdateUser(BaseContext.getCurrentUsername()); // 更新用户
-                    returnDetectData.getDetectImgList().get(i).setIsDetect("1");    // 设置已更新
-                    imgMapper.updateImgDetect(returnDetectData.getDetectImgList().get(i));
+                for(AiDetectReturnVO aiDetectReturnDTO : returnDetectData.getDetectImgList()) {
+                    Img img = new Img();
+                    // 创建ai检测信息，更新对应的img
+                    img.setId(aiDetectReturnDTO.getId());
+
+                    img.setUpdateUser(BaseContext.getCurrentUsername());
+                    img.setUpdateTime(LocalDateTime.now());
+
+                    img.setDetectTime(aiDetectReturnDTO.getDefectTime());
+                    img.setDefectCount(aiDetectReturnDTO.getDefectCount());
+                    img.setIsDetect("1");
+
+                    // 添加缺陷信息
+                    if(aiDetectReturnDTO.getDefectCount() > 0)
+                    {
+                        // 记录缺陷类型
+                        List<Integer> typeIdList = new ArrayList<>();
+                        for(DefectInfo defectInfo : aiDetectReturnDTO.getDefectList()) {
+                            if(!typeIdList.contains(defectInfo.getDefectId()))
+                            {
+                                typeIdList.add(defectInfo.getDefectId());
+                            }
+                            // 设置缺陷名称
+                            defectInfo.setDefectName(DefectType.getDefectTypeMap().get(defectInfo.getDefectId()));
+                            // 添加缺陷信息
+                            imgDefectMapMapper.addDefectInfo(defectInfo);
+                        }
+                        String defectTypeId = typeIdList.stream()
+                                .map(Object::toString)
+                                .collect(Collectors.joining(","));
+                        img.setDefectTypeId(defectTypeId);
+                    }
+                    // 更新对应图片信息
+                    imgMapper.updateImgDetect(img);
                 }
             }
             // 返回处理后的数据
@@ -115,8 +153,21 @@ public class ImgServiceImpl implements ImgService {
      * @return
      */
     @Override
-    public PageResult pageQuery(int page, int pageSize, ImgPageQueryDTO imgPageQueryDTO) {
-        //PageHelper.startPage(imgPageQueryDTO.getPage(),imgPageQueryDTO.getPageSize());
+    public PageResult pageQuery(int page, int pageSize, ImgPageQueryVO imgPageQueryDTO) {
+        // 如果查询缺陷类型，则转换为对应的数字
+        if(!imgPageQueryDTO.getDefectType().isEmpty())
+        {
+            for (Map.Entry<Integer, String> entry : getDefectTypeMap().entrySet()) {
+                if (entry.getValue().equals(imgPageQueryDTO.getDefectType())) {
+                    imgPageQueryDTO.setDefectType(entry.getKey().toString());
+                }
+            }
+        }
+        // 设置查询只能为当前用户
+        if(imgPageQueryDTO.getCreateUser() == null)
+        {
+            imgPageQueryDTO.setCreateUser(BaseContext.getCurrentUsername());
+        }
         // 查询总记录数
         long totalRecords  = imgMapper.pageSum(imgPageQueryDTO);
         // 计算总页数
@@ -125,15 +176,45 @@ public class ImgServiceImpl implements ImgService {
         // 将当前页码转换为当前页码第一条记录的位置
         int startIndex = (page - 1) * pageSize;
 
-        List<Img> result = imgMapper.pageQuery(startIndex, pageSize, imgPageQueryDTO);
+        List<ReturnPageImgVO> result = imgMapper.pageQuery(startIndex, pageSize, imgPageQueryDTO);
+        for (ReturnPageImgVO img : result) {
+            List<DefectInfo> defectInfoList = imgDefectMapMapper.getDefectInfoByImgId(img.getId());
+            if(defectInfoList != null && defectInfoList.size() > 0) {
+                for (DefectInfo defectInfo : defectInfoList) {
+                    String defectName = defectInfo.getDefectName();
+                    // 如果 defectName 对应的 List 不存在，则创建一个新的 List
+                    img.getDefectMap().computeIfAbsent(defectName, k -> new ArrayList<>()).add(defectInfo);
+                }
+                // 将字符串按逗号分割并转换为整数数组
+                String str = img.getDefectType();
+                int[] intArray = Arrays.stream(str.split(","))
+                        .mapToInt(Integer::parseInt)
+                        .toArray();
+                // 将缺陷类型id转换为对应的缺陷类型
+                StringBuilder sb = new StringBuilder();
+                for (int i = 0; i < intArray.length; i++) {
+                    int id = intArray[i];
+                    String defectType = getDefectTypeMap().get(id);
+                    if (i > 0) {
+                        sb.append(",");
+                    }
+                    sb.append(defectType);
+
+                }
+                img.setDefectType(sb.toString());
+            }
+
+        }
         return new PageResult(totalPages, totalRecords, result);
     }
 
 
     @Override
-    public boolean updateImg(Img img) {
+    public boolean updateImg(int id, String mark) {
+        Img img = imgMapper.findImgById(Long.valueOf(id));
         img.setUpdateTime(LocalDateTime.now());
         img.setUpdateUser(BaseContext.getCurrentUsername());
+        img.setMark(mark);
         imgMapper.updateImg(img);
         return true;
     }
@@ -143,45 +224,24 @@ public class ImgServiceImpl implements ImgService {
         Img img = imgMapper.findImgById(id);
         if (img != null) {
             imgMapper.deleteImg(img);
-            String originalLocalUrl = img.getOriginalLocalUrl();
-            //String originalBackupUrl = img.getOriginalBackupUrl();
-            String detectLocalUrl = img.getDetectLocalUrl();
-            //String detectBackupUrl = img.getDetectBackupUrl();
-            if(originalLocalUrl != null){
+            String localUrl = img.getLocalDir();
+            String aliyunUrl = img.getAliyunUrl();
+            if(localUrl != null){
                 try {
-                    imgTool.deleteLocalImg(originalLocalUrl);
+                    imgTool.deleteLocalImg(localUrl);
                 } catch (IOException e) {
-                    log.info("删除错误：{}",originalLocalUrl);
+                    log.info("删除错误：{}",localUrl);
                     throw new RuntimeException(e);
                 }
             }
-//            // 删除云端源图片
-//            if(originalBackupUrl != null){
-//                try {
-//                    imgTool.deleteLocalImg(originalBackupUrl);
-//                } catch (IOException e) {
-//                    log.info("删除错误：{}",originalBackupUrl);
-//                    throw new RuntimeException(e);
-//                }
-//            }
-            // 删除本地检测图片
-            if(detectLocalUrl != null){
+            if(aliyunUrl != null){
                 try {
-                    imgTool.deleteLocalImg(detectLocalUrl);
-                } catch (IOException e) {
-                    log.info("删除错误：{}",detectLocalUrl);
-                    throw new RuntimeException(e);
+                    aliOssTool.deleteFile(aliyunUrl);
+                } catch (Exception e) {
+                    log.info("删除云端数据错误：{}",localUrl);
+                    e.printStackTrace();
                 }
             }
-//            // 删除云端检测图片
-//            if(detectBackupUrl != null){
-//                try {
-//                    imgTool.deleteLocalImg(detectBackupUrl);
-//                } catch (IOException e) {
-//                    log.info("删除错误：{}",detectBackupUrl);
-//                    throw new RuntimeException(e);
-//                }
-//            }
             return true;
         }
         return false;

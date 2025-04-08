@@ -1,7 +1,6 @@
 package com.defectscan.controller.img;
 
-import com.defectscan.dto.ImgPageQueryDTO;
-import com.defectscan.entity.Img;
+import com.defectscan.vo.ImgPageQueryVO;
 import com.defectscan.result.PageResult;
 import com.defectscan.result.Result;
 import com.defectscan.service.ImgService;
@@ -32,17 +31,17 @@ public class ImgController {
     @ApiOperation("分类分页查询")
     public Result<PageResult> page(@RequestParam(defaultValue = "1") int page,  // 页码
                                    @RequestParam(defaultValue = "10") int pageSize, // 每页记录数
-                                   ImgPageQueryDTO imgPageQueryDTO){
+                                   ImgPageQueryVO imgPageQueryDTO){
 
         log.info("分页查询,页码：{},每页记录数：{},{}", page, pageSize, imgPageQueryDTO);
         PageResult pageResult = imgService.pageQuery(page, pageSize, imgPageQueryDTO);
         return Result.success(pageResult);
     }
 
-    @PostMapping("/update")
-    public Result updateImg(@RequestBody Img img) {
-        log.info("编辑(更新)信息：{}",img);
-        boolean result = imgService.updateImg(img);
+    @PostMapping("/updateMark")
+    public Result updateImg(@RequestParam int id, @RequestParam String mark) {
+        log.info("编辑备注(更新)信息");
+        boolean result = imgService.updateImg(id, mark);
         if (result) {
             return Result.success("图片信息修改成功");
         } else {

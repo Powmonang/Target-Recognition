@@ -1,8 +1,9 @@
 package com.defectscan.mapper;
 
-import com.defectscan.dto.ImgPageQueryDTO;
+import com.defectscan.dto.AiDetectDTO;
+import com.defectscan.vo.ImgPageQueryVO;
 import com.defectscan.entity.Img;
-import com.github.pagehelper.Page;
+import com.defectscan.vo.ReturnPageImgVO;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
 
@@ -12,15 +13,17 @@ import java.util.List;
 public interface ImgMapper {
     void addImg(Img a);
 
-    Img selectImgByUrl(String url);
+    AiDetectDTO selectAiDetectDTOByUrl(String localDir);
 
     void updateImgDetect(Img img);
 
-    long pageSum(ImgPageQueryDTO imgPageQueryDTO);
+    long pageSum(ImgPageQueryVO imgPageQueryDTO);
 
-    List<Img> pageQuery(int startIndex, int pageSize, @Param("a") ImgPageQueryDTO imgPageQueryDTO);
+    List<ReturnPageImgVO> pageQuery(int startIndex, int pageSize, @Param("a") ImgPageQueryVO imgPageQueryDTO);
 
     Img findImgById(Long id);
+
+    List<Img> findImgByUsername(String username);
 
     int isExist(int id);
 
@@ -28,5 +31,5 @@ public interface ImgMapper {
     void updateImg(Img img);
 
     // 删除图片
-    void deleteImg(Img img);
+    void deleteImg(@Param("a") Img img);
 }

@@ -1032,7 +1032,7 @@ sys|schema||mysql.sys|localhost|TRIGGER|G</Grants>
     </schema>
     <schema id="300" parent="1" name="autodefectscan">
       <Current>1</Current>
-      <LastIntrospectionLocalTimestamp>2025-03-19.15:42:50</LastIntrospectionLocalTimestamp>
+      <LastIntrospectionLocalTimestamp>2025-03-30.13:29:33</LastIntrospectionLocalTimestamp>
       <CollationName>utf8mb4_0900_ai_ci</CollationName>
     </schema>
     <schema id="301" parent="1" name="mytest">
@@ -1069,421 +1069,470 @@ sys|schema||mysql.sys|localhost|TRIGGER|G</Grants>
       <Engine>InnoDB</Engine>
       <CollationName>utf8mb4_0900_ai_ci</CollationName>
     </table>
-    <table id="309" parent="300" name="defect_type">
+    <table id="309" parent="300" name="defect_map">
+      <Comment>图片缺陷信息</Comment>
+      <Engine>InnoDB</Engine>
+      <CollationName>utf8mb4_0900_ai_ci</CollationName>
+    </table>
+    <table id="310" parent="300" name="defect_type">
       <Comment>缺陷列表</Comment>
       <Engine>InnoDB</Engine>
       <CollationName>utf8mb4_0900_ai_ci</CollationName>
     </table>
-    <table id="310" parent="300" name="img_type">
+    <table id="311" parent="300" name="img_type">
       <Comment>图像类别表</Comment>
       <Engine>InnoDB</Engine>
       <CollationName>utf8mb4_0900_ai_ci</CollationName>
     </table>
-    <table id="311" parent="300" name="imgs">
+    <table id="312" parent="300" name="imgs">
       <Engine>InnoDB</Engine>
       <CollationName>utf8mb4_0900_ai_ci</CollationName>
     </table>
-    <table id="312" parent="300" name="operate_log">
+    <table id="313" parent="300" name="operate_log">
       <Comment>操作日志表</Comment>
       <Engine>InnoDB</Engine>
       <CollationName>utf8mb4_0900_ai_ci</CollationName>
     </table>
-    <table id="313" parent="300" name="users">
+    <table id="314" parent="300" name="users">
       <Comment>用户表</Comment>
       <Engine>InnoDB</Engine>
       <CollationName>utf8mb4_0900_ai_ci</CollationName>
     </table>
-    <column id="314" parent="308" name="id">
-      <AutoIncrement>7</AutoIncrement>
+    <column id="315" parent="308" name="id">
+      <AutoIncrement>49</AutoIncrement>
       <NotNull>1</NotNull>
       <Position>1</Position>
       <StoredType>int|0s</StoredType>
     </column>
-    <column id="315" parent="308" name="imgId">
+    <column id="316" parent="308" name="imgId">
       <Comment>备份前图片id</Comment>
       <NotNull>1</NotNull>
       <Position>2</Position>
       <StoredType>int|0s</StoredType>
     </column>
-    <column id="316" parent="308" name="backupType">
+    <column id="317" parent="308" name="backupType">
       <Comment>备份类型,1: 本地备份，2：云端备份</Comment>
       <NotNull>1</NotNull>
       <Position>3</Position>
       <StoredType>varchar(24)|0s</StoredType>
     </column>
-    <column id="317" parent="308" name="imageName">
+    <column id="318" parent="308" name="imageName">
       <Comment>图片名</Comment>
       <Position>4</Position>
       <StoredType>varchar(255)|0s</StoredType>
     </column>
-    <column id="318" parent="308" name="originalLocalUrl">
+    <column id="319" parent="308" name="localDir">
       <Comment>源图片本地地址</Comment>
       <Position>5</Position>
       <StoredType>text|0s</StoredType>
     </column>
-    <column id="319" parent="308" name="originalBackupUrl">
-      <Comment>备份地址</Comment>
+    <column id="320" parent="308" name="aliyunUrl">
+      <Comment>阿里云路径</Comment>
       <Position>6</Position>
       <StoredType>text|0s</StoredType>
     </column>
-    <column id="320" parent="308" name="detectLocalUrl">
-      <Comment>图片存储路径（本地路径）</Comment>
+    <column id="321" parent="308" name="backupUrl">
+      <Comment>备份地址</Comment>
       <Position>7</Position>
-      <StoredType>text|0s</StoredType>
-    </column>
-    <column id="321" parent="308" name="detectBackupUrl">
-      <Comment>备份路径</Comment>
-      <Position>8</Position>
       <StoredType>text|0s</StoredType>
     </column>
     <column id="322" parent="308" name="detectTime">
       <Comment>图片检测时间</Comment>
-      <Position>9</Position>
+      <Position>8</Position>
       <StoredType>varchar(128)|0s</StoredType>
     </column>
-    <column id="323" parent="308" name="defectTagId">
-      <Comment>缺陷类别ID,多种缺陷由逗号分隔</Comment>
-      <Position>10</Position>
-      <StoredType>char(16)|0s</StoredType>
-    </column>
-    <column id="324" parent="308" name="defectCount">
+    <column id="323" parent="308" name="defectCount">
       <Comment>缺陷数量    -1：未判断 0：无缺陷</Comment>
       <DefaultExpression>&apos;-1&apos;</DefaultExpression>
-      <Position>11</Position>
+      <Position>9</Position>
       <StoredType>varchar(126)|0s</StoredType>
     </column>
-    <column id="325" parent="308" name="confidenceLevel">
-      <Comment>检测结果的置信度</Comment>
-      <Position>12</Position>
+    <column id="324" parent="308" name="defectTypeId">
+      <Comment>多个缺陷用逗号隔开</Comment>
+      <Position>10</Position>
       <StoredType>varchar(128)|0s</StoredType>
     </column>
-    <column id="326" parent="308" name="createTime">
-      <Position>13</Position>
+    <column id="325" parent="308" name="createTime">
+      <Position>11</Position>
       <StoredType>datetime|0s</StoredType>
     </column>
-    <column id="327" parent="308" name="updateTime">
+    <column id="326" parent="308" name="updateTime">
       <Comment>最后修改时间</Comment>
-      <Position>14</Position>
+      <Position>12</Position>
       <StoredType>datetime|0s</StoredType>
     </column>
-    <column id="328" parent="308" name="createUser">
-      <Position>15</Position>
+    <column id="327" parent="308" name="createUser">
+      <Position>13</Position>
       <StoredType>varchar(128)|0s</StoredType>
     </column>
-    <column id="329" parent="308" name="updateUser">
+    <column id="328" parent="308" name="updateUser">
       <Comment>最后修改人</Comment>
+      <Position>14</Position>
+      <StoredType>varchar(128)|0s</StoredType>
+    </column>
+    <column id="329" parent="308" name="mark">
+      <Comment>备注</Comment>
+      <Position>15</Position>
+      <StoredType>text|0s</StoredType>
+    </column>
+    <column id="330" parent="308" name="isDetect">
+      <Comment>是否检测</Comment>
+      <DefaultExpression>&apos;0&apos;</DefaultExpression>
       <Position>16</Position>
       <StoredType>varchar(128)|0s</StoredType>
     </column>
-    <column id="330" parent="308" name="mark">
-      <Comment>备注</Comment>
+    <column id="331" parent="308" name="isOpe">
+      <Comment>是否被标注（1：是，0：否）</Comment>
+      <DefaultExpression>&apos;0&apos;</DefaultExpression>
       <Position>17</Position>
-      <StoredType>text|0s</StoredType>
+      <StoredType>varchar(128)|0s</StoredType>
     </column>
-    <column id="331" parent="308" name="isDetect">
-      <Comment>是否检测</Comment>
+    <column id="332" parent="308" name="isShow">
+      <Comment>是否被展示</Comment>
       <DefaultExpression>&apos;0&apos;</DefaultExpression>
       <Position>18</Position>
       <StoredType>varchar(128)|0s</StoredType>
     </column>
-    <column id="332" parent="308" name="isOpe">
-      <Comment>是否被标注（1：是，0：否）</Comment>
+    <column id="333" parent="308" name="isBackup">
+      <Comment>是否备份</Comment>
       <DefaultExpression>&apos;0&apos;</DefaultExpression>
       <Position>19</Position>
       <StoredType>varchar(128)|0s</StoredType>
     </column>
-    <column id="333" parent="308" name="isShow">
-      <Comment>是否被展示</Comment>
-      <DefaultExpression>&apos;0&apos;</DefaultExpression>
-      <Position>20</Position>
-      <StoredType>varchar(128)|0s</StoredType>
-    </column>
-    <column id="334" parent="308" name="isBackup">
-      <Comment>是否备份</Comment>
-      <DefaultExpression>&apos;0&apos;</DefaultExpression>
-      <Position>21</Position>
-      <StoredType>varchar(128)|0s</StoredType>
-    </column>
-    <index id="335" parent="308" name="PRIMARY">
+    <index id="334" parent="308" name="PRIMARY">
       <ColNames>id</ColNames>
       <Type>btree</Type>
       <Unique>1</Unique>
     </index>
-    <key id="336" parent="308" name="PRIMARY">
+    <key id="335" parent="308" name="PRIMARY">
       <NameSurrogate>1</NameSurrogate>
       <Primary>1</Primary>
       <UnderlyingIndexName>PRIMARY</UnderlyingIndexName>
     </key>
-    <column id="337" parent="309" name="id">
-      <AutoIncrement>1</AutoIncrement>
+    <column id="336" parent="309" name="id">
+      <AutoIncrement>16</AutoIncrement>
+      <NotNull>1</NotNull>
+      <Position>1</Position>
+      <StoredType>int|0s</StoredType>
+    </column>
+    <column id="337" parent="309" name="imgId">
+      <Position>2</Position>
+      <StoredType>int|0s</StoredType>
+    </column>
+    <column id="338" parent="309" name="defectId">
+      <Comment>缺陷类型id</Comment>
+      <Position>3</Position>
+      <StoredType>int|0s</StoredType>
+    </column>
+    <column id="339" parent="309" name="defectName">
+      <Comment>缺陷类型</Comment>
+      <Position>4</Position>
+      <StoredType>varchar(255)|0s</StoredType>
+    </column>
+    <column id="340" parent="309" name="x1">
+      <Position>5</Position>
+      <StoredType>int|0s</StoredType>
+    </column>
+    <column id="341" parent="309" name="y1">
+      <Position>6</Position>
+      <StoredType>int|0s</StoredType>
+    </column>
+    <column id="342" parent="309" name="x2">
+      <Position>7</Position>
+      <StoredType>int|0s</StoredType>
+    </column>
+    <column id="343" parent="309" name="y2">
+      <Position>8</Position>
+      <StoredType>int|0s</StoredType>
+    </column>
+    <column id="344" parent="309" name="confidenceLevel">
+      <Comment>该缺陷置信度</Comment>
+      <Position>9</Position>
+      <StoredType>varchar(128)|0s</StoredType>
+    </column>
+    <foreign-key id="345" parent="309" name="defectmap_imgs_id_fk">
+      <ColNames>imgId</ColNames>
+      <RefColNames>id</RefColNames>
+      <RefTableName>imgs</RefTableName>
+    </foreign-key>
+    <index id="346" parent="309" name="PRIMARY">
+      <ColNames>id</ColNames>
+      <Type>btree</Type>
+      <Unique>1</Unique>
+    </index>
+    <index id="347" parent="309" name="defectmap_imgs_id_fk">
+      <ColNames>imgId</ColNames>
+      <Type>btree</Type>
+    </index>
+    <index id="348" parent="309" name="defect_map_defect_type_id_fk">
+      <ColNames>defectId</ColNames>
+      <Type>btree</Type>
+    </index>
+    <key id="349" parent="309" name="PRIMARY">
+      <NameSurrogate>1</NameSurrogate>
+      <Primary>1</Primary>
+      <UnderlyingIndexName>PRIMARY</UnderlyingIndexName>
+    </key>
+    <column id="350" parent="310" name="id">
+      <AutoIncrement>4</AutoIncrement>
       <Comment>缺陷类型id</Comment>
       <NotNull>1</NotNull>
       <Position>1</Position>
       <StoredType>int|0s</StoredType>
     </column>
-    <column id="338" parent="309" name="type">
+    <column id="351" parent="310" name="type">
       <Comment>缺陷类型名称</Comment>
       <NotNull>1</NotNull>
       <Position>2</Position>
       <StoredType>varchar(128)|0s</StoredType>
     </column>
-    <column id="339" parent="309" name="content">
+    <column id="352" parent="310" name="content">
       <Comment>内容</Comment>
       <Position>3</Position>
       <StoredType>text|0s</StoredType>
     </column>
-    <column id="340" parent="309" name="mark">
+    <column id="353" parent="310" name="mark">
       <Comment>备注</Comment>
       <Position>4</Position>
       <StoredType>text|0s</StoredType>
     </column>
-    <index id="341" parent="309" name="PRIMARY">
+    <index id="354" parent="310" name="PRIMARY">
       <ColNames>id</ColNames>
       <Type>btree</Type>
       <Unique>1</Unique>
     </index>
-    <key id="342" parent="309" name="PRIMARY">
+    <key id="355" parent="310" name="PRIMARY">
       <NameSurrogate>1</NameSurrogate>
       <Primary>1</Primary>
       <UnderlyingIndexName>PRIMARY</UnderlyingIndexName>
     </key>
-    <column id="343" parent="310" name="id">
+    <column id="356" parent="311" name="id">
       <Comment>图像类别ID</Comment>
       <NotNull>1</NotNull>
       <Position>1</Position>
       <StoredType>char(16)|0s</StoredType>
     </column>
-    <column id="344" parent="310" name="type">
+    <column id="357" parent="311" name="type">
       <Comment>图像类别</Comment>
       <Position>2</Position>
       <StoredType>varchar(64)|0s</StoredType>
     </column>
-    <column id="345" parent="310" name="content">
+    <column id="358" parent="311" name="content">
       <Comment>内容</Comment>
       <Position>3</Position>
       <StoredType>text|0s</StoredType>
     </column>
-    <column id="346" parent="310" name="mark">
+    <column id="359" parent="311" name="mark">
       <Comment>备注</Comment>
       <Position>4</Position>
       <StoredType>text|0s</StoredType>
     </column>
-    <index id="347" parent="310" name="PRIMARY">
+    <index id="360" parent="311" name="PRIMARY">
       <ColNames>id</ColNames>
       <Type>btree</Type>
       <Unique>1</Unique>
     </index>
-    <key id="348" parent="310" name="PRIMARY">
+    <key id="361" parent="311" name="PRIMARY">
       <NameSurrogate>1</NameSurrogate>
       <Primary>1</Primary>
       <UnderlyingIndexName>PRIMARY</UnderlyingIndexName>
     </key>
-    <column id="349" parent="311" name="id">
-      <AutoIncrement>36</AutoIncrement>
+    <column id="362" parent="312" name="id">
+      <AutoIncrement>130</AutoIncrement>
       <NotNull>1</NotNull>
       <Position>1</Position>
       <StoredType>int|0s</StoredType>
     </column>
-    <column id="350" parent="311" name="imageName">
+    <column id="363" parent="312" name="imageName">
       <Comment>图片名称</Comment>
       <Position>2</Position>
       <StoredType>varchar(255)|0s</StoredType>
     </column>
-    <column id="351" parent="311" name="originalLocalUrl">
-      <Comment>源图片本地地址</Comment>
+    <column id="364" parent="312" name="localDir">
+      <Comment>图片本地地址</Comment>
       <Position>3</Position>
       <StoredType>text|0s</StoredType>
     </column>
-    <column id="352" parent="311" name="originalBackupUrl">
-      <Comment>源图片备份地址</Comment>
+    <column id="365" parent="312" name="aliyunUrl">
+      <Comment>阿里云路径</Comment>
       <Position>4</Position>
       <StoredType>text|0s</StoredType>
     </column>
-    <column id="353" parent="311" name="detectLocalUrl">
-      <Comment>图片存储路径（本地路径）</Comment>
+    <column id="366" parent="312" name="backupUrl">
+      <Comment>图片备份地址</Comment>
       <Position>5</Position>
       <StoredType>text|0s</StoredType>
     </column>
-    <column id="354" parent="311" name="detectBackupUrl">
-      <Comment>备份路径</Comment>
-      <Position>6</Position>
-      <StoredType>text|0s</StoredType>
-    </column>
-    <column id="355" parent="311" name="detectTime">
+    <column id="367" parent="312" name="detectTime">
       <Comment>图片检测时间</Comment>
-      <Position>7</Position>
+      <Position>6</Position>
       <StoredType>varchar(128)|0s</StoredType>
     </column>
-    <column id="356" parent="311" name="defectTagId">
-      <Comment>缺陷类别ID,多种缺陷由逗号分隔</Comment>
-      <Position>8</Position>
-      <StoredType>char(16)|0s</StoredType>
-    </column>
-    <column id="357" parent="311" name="defectCount">
+    <column id="368" parent="312" name="defectCount">
       <Comment>缺陷数量    -1：未判断 0：无缺陷</Comment>
       <DefaultExpression>&apos;-1&apos;</DefaultExpression>
-      <Position>9</Position>
+      <Position>7</Position>
       <StoredType>varchar(126)|0s</StoredType>
     </column>
-    <column id="358" parent="311" name="confidenceLevel">
-      <Comment>检测结果的置信度</Comment>
-      <Position>10</Position>
+    <column id="369" parent="312" name="defectTypeId">
+      <Comment>缺陷类型，多个缺陷用逗号隔开</Comment>
+      <Position>8</Position>
       <StoredType>varchar(128)|0s</StoredType>
     </column>
-    <column id="359" parent="311" name="createTime">
-      <Position>11</Position>
+    <column id="370" parent="312" name="createTime">
+      <Position>9</Position>
       <StoredType>datetime|0s</StoredType>
     </column>
-    <column id="360" parent="311" name="updateTime">
+    <column id="371" parent="312" name="updateTime">
       <Comment>最后修改时间</Comment>
-      <Position>12</Position>
+      <Position>10</Position>
       <StoredType>datetime|0s</StoredType>
     </column>
-    <column id="361" parent="311" name="createUser">
-      <Position>13</Position>
+    <column id="372" parent="312" name="createUser">
+      <Position>11</Position>
       <StoredType>varchar(128)|0s</StoredType>
     </column>
-    <column id="362" parent="311" name="updateUser">
+    <column id="373" parent="312" name="updateUser">
       <Comment>最后修改人</Comment>
+      <Position>12</Position>
+      <StoredType>varchar(128)|0s</StoredType>
+    </column>
+    <column id="374" parent="312" name="mark">
+      <Comment>备注</Comment>
+      <Position>13</Position>
+      <StoredType>text|0s</StoredType>
+    </column>
+    <column id="375" parent="312" name="isDetect">
+      <Comment>是否检测</Comment>
+      <DefaultExpression>&apos;0&apos;</DefaultExpression>
       <Position>14</Position>
       <StoredType>varchar(128)|0s</StoredType>
     </column>
-    <column id="363" parent="311" name="mark">
-      <Comment>备注</Comment>
+    <column id="376" parent="312" name="isOpe">
+      <Comment>是否被标注（1：是，0：否）</Comment>
+      <DefaultExpression>&apos;0&apos;</DefaultExpression>
       <Position>15</Position>
-      <StoredType>text|0s</StoredType>
+      <StoredType>varchar(128)|0s</StoredType>
     </column>
-    <column id="364" parent="311" name="isDetect">
-      <Comment>是否检测</Comment>
+    <column id="377" parent="312" name="isShow">
+      <Comment>是否被展示</Comment>
       <DefaultExpression>&apos;0&apos;</DefaultExpression>
       <Position>16</Position>
       <StoredType>varchar(128)|0s</StoredType>
     </column>
-    <column id="365" parent="311" name="isOpe">
-      <Comment>是否被标注（1：是，0：否）</Comment>
+    <column id="378" parent="312" name="isBackup">
+      <Comment>是否备份</Comment>
       <DefaultExpression>&apos;0&apos;</DefaultExpression>
       <Position>17</Position>
       <StoredType>varchar(128)|0s</StoredType>
     </column>
-    <column id="366" parent="311" name="isShow">
-      <Comment>是否被展示</Comment>
-      <DefaultExpression>&apos;0&apos;</DefaultExpression>
-      <Position>18</Position>
-      <StoredType>varchar(128)|0s</StoredType>
-    </column>
-    <column id="367" parent="311" name="isBackup">
-      <Comment>是否备份</Comment>
-      <DefaultExpression>&apos;0&apos;</DefaultExpression>
-      <Position>19</Position>
-      <StoredType>varchar(128)|0s</StoredType>
-    </column>
-    <index id="368" parent="311" name="PRIMARY">
+    <index id="379" parent="312" name="PRIMARY">
       <ColNames>id</ColNames>
       <Type>btree</Type>
       <Unique>1</Unique>
     </index>
-    <key id="369" parent="311" name="PRIMARY">
+    <key id="380" parent="312" name="PRIMARY">
       <NameSurrogate>1</NameSurrogate>
       <Primary>1</Primary>
       <UnderlyingIndexName>PRIMARY</UnderlyingIndexName>
     </key>
-    <column id="370" parent="312" name="id">
+    <column id="381" parent="313" name="id">
       <AutoIncrement>1</AutoIncrement>
       <Comment>ID</Comment>
       <NotNull>1</NotNull>
       <Position>1</Position>
       <StoredType>int unsigned|0s</StoredType>
     </column>
-    <column id="371" parent="312" name="operate_user">
+    <column id="382" parent="313" name="operate_user">
       <Comment>操作人ID</Comment>
       <Position>2</Position>
       <StoredType>varchar(128)|0s</StoredType>
     </column>
-    <column id="372" parent="312" name="operate_time">
+    <column id="383" parent="313" name="operate_time">
       <Comment>操作时间</Comment>
       <Position>3</Position>
       <StoredType>datetime|0s</StoredType>
     </column>
-    <column id="373" parent="312" name="class_name">
+    <column id="384" parent="313" name="class_name">
       <Comment>操作的类名</Comment>
       <Position>4</Position>
       <StoredType>varchar(100)|0s</StoredType>
     </column>
-    <column id="374" parent="312" name="method_name">
+    <column id="385" parent="313" name="method_name">
       <Comment>操作的方法名</Comment>
       <Position>5</Position>
       <StoredType>varchar(100)|0s</StoredType>
     </column>
-    <column id="375" parent="312" name="method_params">
+    <column id="386" parent="313" name="method_params">
       <Comment>方法参数</Comment>
       <Position>6</Position>
       <StoredType>varchar(1000)|0s</StoredType>
     </column>
-    <column id="376" parent="312" name="return_value">
+    <column id="387" parent="313" name="return_value">
       <Comment>返回值</Comment>
       <Position>7</Position>
       <StoredType>varchar(2000)|0s</StoredType>
     </column>
-    <column id="377" parent="312" name="cost_time">
+    <column id="388" parent="313" name="cost_time">
       <Comment>方法执行耗时, 单位:ms</Comment>
       <Position>8</Position>
       <StoredType>bigint|0s</StoredType>
     </column>
-    <index id="378" parent="312" name="PRIMARY">
+    <index id="389" parent="313" name="PRIMARY">
       <ColNames>id</ColNames>
       <Type>btree</Type>
       <Unique>1</Unique>
     </index>
-    <key id="379" parent="312" name="PRIMARY">
+    <key id="390" parent="313" name="PRIMARY">
       <NameSurrogate>1</NameSurrogate>
       <Primary>1</Primary>
       <UnderlyingIndexName>PRIMARY</UnderlyingIndexName>
     </key>
-    <column id="380" parent="313" name="username">
+    <column id="391" parent="314" name="username">
       <Comment>账号</Comment>
       <NotNull>1</NotNull>
       <Position>1</Position>
       <StoredType>char(16)|0s</StoredType>
     </column>
-    <column id="381" parent="313" name="password">
+    <column id="392" parent="314" name="password">
       <Comment>加密密码</Comment>
       <NotNull>1</NotNull>
       <Position>2</Position>
       <StoredType>varchar(128)|0s</StoredType>
     </column>
-    <column id="382" parent="313" name="userType">
+    <column id="393" parent="314" name="userType">
       <Comment>用户权限 0-普通 1-管理员</Comment>
       <DefaultExpression>&apos;0&apos;</DefaultExpression>
       <NotNull>1</NotNull>
       <Position>3</Position>
       <StoredType>char(1)|0s</StoredType>
     </column>
-    <column id="383" parent="313" name="name">
+    <column id="394" parent="314" name="name">
       <Comment>姓名</Comment>
       <Position>4</Position>
       <StoredType>varchar(128)|0s</StoredType>
     </column>
-    <column id="384" parent="313" name="sex">
+    <column id="395" parent="314" name="sex">
       <DefaultExpression>&apos;2&apos;</DefaultExpression>
       <Position>5</Position>
       <StoredType>varchar(128)|0s</StoredType>
     </column>
-    <column id="385" parent="313" name="phone">
+    <column id="396" parent="314" name="phone">
       <Comment>联系电话</Comment>
       <Position>6</Position>
       <StoredType>varchar(20)|0s</StoredType>
     </column>
-    <column id="386" parent="313" name="finalLogin">
+    <column id="397" parent="314" name="finalLogin">
       <Comment>最后登录时间</Comment>
       <Position>7</Position>
       <StoredType>datetime|0s</StoredType>
     </column>
-    <index id="387" parent="313" name="PRIMARY">
+    <index id="398" parent="314" name="PRIMARY">
       <ColNames>username</ColNames>
       <Type>btree</Type>
       <Unique>1</Unique>
     </index>
-    <key id="388" parent="313" name="PRIMARY">
+    <key id="399" parent="314" name="PRIMARY">
       <NameSurrogate>1</NameSurrogate>
       <Primary>1</Primary>
       <UnderlyingIndexName>PRIMARY</UnderlyingIndexName>

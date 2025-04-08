@@ -4,24 +4,21 @@
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.defectscan.mapper.BackupMapper">
 
-    <!-- 定义结果映射 -->
+    <!--    数据库参数与Img实体类参数映射-->
     <resultMap id="ImgResultMap" type="com.defectscan.entity.Img">
-        <id property="id" column="imgId"/>
+        <id property="id" column="id"/>
         <result property="imageName" column="imageName"/>
-        <result property="originalLocalUrl" column="originalLocalUrl"/>
-        <result property="originalBackupUrl" column="originalBackupUrl"/>
-        <result property="detectLocalUrl" column="detectLocalUrl"/>
-        <result property="detectBackupUrl" column="detectBackupUrl"/>
+        <result property="localDir" column="localDir"/>
+        <result property="aliyunUrl" column="aliyunUrl"/>
+        <result property="backupUrl" column="backupUrl"/>
         <result property="detectTime" column="detectTime"/>
-        <result property="defectTagId" column="defectTagId"/>
         <result property="defectCount" column="defectCount"/>
-        <result property="confidenceLevel" column="confidenceLevel"/>
+        <result property="defectTypeId" column="defectTypeId"/>
         <result property="createTime" column="createTime"/>
         <result property="updateTime" column="updateTime"/>
         <result property="createUser" column="createUser"/>
         <result property="updateUser" column="updateUser"/>
         <result property="mark" column="mark"/>
-        <result property="isDetect" column="isDetect"/>
         <result property="isOpe" column="isOpe"/>
         <result property="isShow" column="isShow"/>
         <result property="isBackup" column="isBackup"/>
@@ -42,29 +39,14 @@
             <if test="a.imageName != null and a.imageName != ''">
                 imageName = #{a.imageName},
             </if>
-<!--            <if test="a.originalLocalUrl != null and a.originalLocalUrl != ''">-->
-<!--                originalLocalUrl = #{a.originalLocalUrl},-->
-<!--            </if>-->
-<!--            <if test="a.originalBackupUrl != null and a.originalBackupUrl != ''">-->
-<!--                originalBackupUrl = #{a.originalBackupUrl},-->
-<!--            </if>-->
-<!--            <if test="a.detectLocalUrl != null and a.detectLocalUrl != ''">-->
-<!--                detectLocalUrl = #{a.detectLocalUrl},-->
-<!--            </if>-->
-<!--            <if test="a.detectBackupUrl != null and a.detectBackupUrl != ''">-->
-<!--                detectBackupUrl = #{a.detectBackupUrl},-->
-<!--            </if>-->
             <if test="a.detectTime != null and a.detectTime != ''">
                 detectTime = #{a.detectTime},
-            </if>
-            <if test="a.defectTagId != null and a.defectTagId != ''">
-                defectTagId = #{a.defectTagId},
             </if>
             <if test="a.defectCount != null and a.defectCount != ''">
                 defectCount = #{a.defectCount},
             </if>
-            <if test="a.confidenceLevel != null and a.confidenceLevel != ''">
-                confidenceLevel = #{a.confidenceLevel},
+            <if test="a.defectTypeId != null and a.defectTypeId != ''">
+                defectTypeId = #{a.defectTypeId},
             </if>
             <if test="a.createTime != null">
                 createTime = #{a.createTime},
@@ -94,22 +76,17 @@
         where imgId = #{a.id} and backupType = #{backupType};
     </update>
 
-
     <!--    添加备份图片信息-->
     <insert id="addBackup">
         INSERT INTO backup_record (
-            imgId, backupType, imageName, originalLocalUrl, originalBackupUrl,
-            detectLocalUrl, detectBackupUrl, detectTime,
-            defectTagId, defectCount, confidenceLevel,
-            createTime, updateTime, createUser,
-            updateUser, mark, isOpe, isShow, isBackup
+            imgId, backupType, imageName, localDir, aliyunUrl, backupUrl,
+            detectTime, defectCount, defectTypeId, createTime, updateTime,
+            createUser,updateUser, mark, isOpe, isShow, isBackup
         )
         VALUES (
-                   #{a.id}, #{backupType}, #{a.imageName}, #{a.originalLocalUrl}, #{a.originalBackupUrl},
-                   #{a.detectLocalUrl}, #{a.detectBackupUrl}, #{a.detectTime},
-                   #{a.defectTagId}, #{a.defectCount}, #{a.confidenceLevel},
-                   #{a.createTime}, #{a.updateTime}, #{a.createUser},
-                   #{a.updateUser}, #{a.mark}, #{a.isOpe}, #{a.isShow}, #{a.isBackup}
+                   #{a.id}, #{backupType}, #{a.imageName}, #{a.localDir}, #{a.aliyunUrl}, #{a.backupUrl},
+                   #{a.detectTime}, #{a.defectCount},#{a.defectTypeId} ,#{a.createTime}, #{a.updateTime},
+                  #{a.createUser},#{a.updateUser}, #{a.mark}, #{a.isOpe}, #{a.isShow}, #{a.isBackup}
                );
     </insert>
 
@@ -128,14 +105,12 @@
         select
             imgId,
             imageName,
-            originalLocalUrl,
-            originalBackupUrl,
-            detectLocalUrl,
-            detectBackupUrl,
+            localDir,
+            aliyunUrl,
+            backupUrl,
             detectTime,
-            defectTagId,
             defectCount,
-            confidenceLevel,
+            defectTypeId,
             createTime,
             updateTime,
             createUser,
@@ -154,18 +129,14 @@
 <!--    恢复图片信息，包括id值的恢复-->
     <insert id="restoreImg" parameterType="com.defectscan.entity.Img">
         INSERT INTO imgs (
-            id, imageName, originalLocalUrl, originalBackupUrl,
-            detectLocalUrl, detectBackupUrl, detectTime,
-            defectTagId, defectCount, confidenceLevel,
-            createTime, updateTime, createUser,
-            updateUser, mark, isOpe, isShow, isBackup
+            id, imageName, localDir, backupUrl, aliyunUrl,
+            detectTime, defectCount, defectTypeId, createTime, updateTime,
+            createUser,updateUser, mark, isOpe, isShow, isBackup
         )
         VALUES (
-                   #{id}, #{imageName}, #{originalLocalUrl}, #{originalBackupUrl},
-                   #{detectLocalUrl}, #{detectBackupUrl}, #{detectTime},
-                   #{defectTagId}, #{defectCount}, #{confidenceLevel},
-                   #{createTime}, #{updateTime}, #{createUser},
-                   #{updateUser}, #{mark}, #{isOpe}, #{isShow}, #{isBackup}
+                   #{id}, #{imageName}, #{localDir}, #{backupUrl}, #{aliyunUrl},
+                   #{detectTime}, #{defectCount},#{defectTypeId},#{createTime}, #{updateTime},
+                   #{createUser},#{updateUser}, #{mark}, #{isOpe}, #{isShow}, #{isBackup}
                );
     </insert>
 

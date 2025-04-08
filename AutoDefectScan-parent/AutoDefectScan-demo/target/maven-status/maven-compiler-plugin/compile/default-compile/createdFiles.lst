@@ -1,6 +1,0 @@
-com\defectscan\controller\user\Login.class
-com\defectscan\service\UserService.class
-com\defectscan\AutoDefectScanDemoApplication.class
-com\defectscan\service\impl\UserServiceImpl.class
-com\defectscan\controller\test.class
-com\defectscan\mapper\UserMapper.class

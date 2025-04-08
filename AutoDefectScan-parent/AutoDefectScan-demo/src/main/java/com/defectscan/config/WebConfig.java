@@ -10,23 +10,17 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 
 @Configuration
 public class WebConfig implements WebMvcConfigurer {
-//    @Value("${upload.officeDir}")
-//    private String tempDir;
+
 
     @Autowired
     LoginCheckInterceptor loginCheckInterceptor;
 
+    public WebConfig() {
+        System.out.println("WebConfig initialized");
+    }
     @Override
     public void addInterceptors(InterceptorRegistry registry)
     {
-        registry.addInterceptor(loginCheckInterceptor).addPathPatterns("/**").excludePathPatterns("/api/user/login").excludePathPatterns("/api/user/register");
+        registry.addInterceptor(loginCheckInterceptor).addPathPatterns("/**").excludePathPatterns("/api/user/login","/api/user/register");
     }
-    /*
-     *addResourceHandler:访问映射路径
-     *addResourceLocations:资源绝对路径
-     */
-//    @Override
-//    public void addResourceHandlers(ResourceHandlerRegistry registry) {
-//        registry.addResourceHandler("/uploadReturn/**").addResourceLocations("file:"+tempDir);
-//    }
 }

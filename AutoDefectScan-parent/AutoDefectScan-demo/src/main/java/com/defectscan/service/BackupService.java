@@ -8,17 +8,16 @@ import java.util.List;
 public interface BackupService {
     /**
      * 本地备份
-     * @param imgs
      * @return
      */
-    boolean localBackup(List<Img> imgs);
+    boolean localBackup();
 
-    /**
-     * 阿里云云端备份
-     * @param imgs
-     * @return
-     */
-    boolean aliyunBackup(List<Img> imgs);
+//    /**
+//     * 阿里云云端备份
+//     * @param imgs
+//     * @return
+//     */
+//    boolean aliyunBackup(List<Img> imgs);
 
     /**
      * 恢复本地备份
@@ -26,9 +25,9 @@ public interface BackupService {
      */
     boolean restoreLocalBackup();
 
-    /**
-     * 恢复云端备份
-     * @return
-     */
-    boolean restoreAliyunBackup();
+//    /**
+//     * 恢复云端备份
+//     * @return
+//     */
+//    boolean restoreAliyunBackup();
 }

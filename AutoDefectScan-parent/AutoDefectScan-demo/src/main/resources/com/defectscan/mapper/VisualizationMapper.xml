@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.defectscan.mapper.VisualizationMapper">
+    <select id="getDefectInfosByImgIds" resultType="com.defectscan.entity.DefectInfo">
+        select *
+        from defect_map
+        where imgId in
+        <foreach collection="list" item="imgId" open="(" separator="," close=")">
+            #{imgId}
+        </foreach>
+    </select>
+</mapper>    

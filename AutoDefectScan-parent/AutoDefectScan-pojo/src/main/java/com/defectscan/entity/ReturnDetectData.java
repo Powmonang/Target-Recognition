@@ -1,5 +1,6 @@
 package com.defectscan.entity;
 
+import com.defectscan.vo.AiDetectReturnVO;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -13,5 +14,5 @@ public class ReturnDetectData {
     int code;
     String msg;
     String requestTime;
-    List<Img> detectImgList;
+    List<AiDetectReturnVO> detectImgList;
 }

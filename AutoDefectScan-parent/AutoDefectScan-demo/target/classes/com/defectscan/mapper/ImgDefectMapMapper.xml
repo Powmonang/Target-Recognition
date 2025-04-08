@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.defectscan.mapper.ImgDefectMapMapper">
+
+
+    <select id="getDefectInfoByImgId" parameterType="int" resultType="com.defectscan.entity.DefectInfo">
+        select * from defect_map
+        <where>
+            imgId = #{imgId}
+        </where>
+    </select>
+
+    <insert id="addDefectInfo" parameterType="com.defectscan.entity.DefectInfo">
+        INSERT INTO defect_map (
+            imgId, defectId, defectName, x1,
+            y1, x2, y2, confidenceLevel
+        )
+        VALUES (
+                   #{imgId}, #{defectId}, #{defectName},
+                   #{x1}, #{y1}, #{x2},
+                   #{y2}, #{confidenceLevel}
+               );
+    </insert>
+
+
+
+</mapper>

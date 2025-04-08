@@ -5,7 +5,7 @@ import com.defectscan.result.Result;
 import com.defectscan.service.UserService;
 import com.defectscan.tools.JwtTool;
 import com.defectscan.tools.SafeTool;
-import io.jsonwebtoken.Claims;
+import com.defectscan.vo.RegisterRequestVO;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -22,7 +22,7 @@ import java.util.Map;
 @RequestMapping("/api/user")
 public class LoginController {
     //日志记录对象
-    private final Logger logger = LoggerFactory.getLogger("com.defectscan.controller.common");
+    private final Logger logger = LoggerFactory.getLogger("com.defectscan.controller.user.LoginController");
 
     @Autowired
     UserService userService;
@@ -74,21 +74,30 @@ public class LoginController {
     }
 
     @PostMapping("/register")
-    public Result register(@RequestBody User request)
+    public Result register(@RequestBody RegisterRequestVO registerRequest)
     {
         try{
             //获取原始密码
-            String ps = request.getPassword();
+            String ps = registerRequest.getPassword();
             String hashPs = safeTool.hashPassword(ps);
             //进行加密操作 再添加
-            request.setPassword(hashPs);
-            userService.addUser(request);
-            logger.info(request.getUsername()+":注册成功");
-            return Result.success("注册成功", null);
+            User user = new User();
+            user.setUsername(registerRequest.getUsername());
+            user.setPassword(hashPs);
+            user.setPhone(registerRequest.getPhone());
+            user.setUserType("1");
+            if(userService.findUserByUsername(registerRequest.getUsername()) == 0)
+            {
+                userService.addUser(user);
+                logger.info(user.getUsername()+":注册成功");
+                return Result.success("注册成功", null);
+            }else{
+                logger.info(user.getUsername()+":注册失败，用户名已存在");
+                return Result.error("用户名已存在");
+            }
         }catch(Exception e){
-            e.printStackTrace();
             logger.error(e.getMessage());
-            return Result.error("用户名已存在");
+            return Result.error(e.getMessage());
         }
     }
 

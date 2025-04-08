@@ -11,6 +11,8 @@ import lombok.extern.slf4j.Slf4j;
 
 import java.io.ByteArrayInputStream;
 import java.io.File;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 
 @Data
 @AllArgsConstructor
@@ -67,29 +69,34 @@ public class AliOssTool {
 
     /**
      * 删除图片
-     * @param objectName
+     * @param aliyunUrl
      */
-    public boolean deleteFile(String objectName) {
+    public boolean deleteFile(String aliyunUrl) {
         OSS ossClient = new OSSClientBuilder().build(endpoint, accessKeyId, accessKeySecret);
         try{
-            ossClient.deleteObject(bucketName, objectName);
-            ossClient.shutdown();
-            log.info("云端图片：{} 删除成功", objectName);
-            return true;
+            int lastIndex = aliyunUrl.lastIndexOf('/');
+            if (lastIndex != -1) {
+                String objectName =  aliyunUrl.substring(lastIndex + 1);
+                ossClient.deleteObject(bucketName, objectName);
+                ossClient.shutdown();
+                log.info("云端图片：{} 删除成功", objectName);
+                return true;
+            }
         } catch (OSSException oe) {
             log.info("云端图片删除失败：{}", oe.getMessage());
             return false;
         }
+        return true;
     }
 
-    public void restoreImage(String originalUrl,String backupUrl) {
+    public void restoreImage(String localDir,String backupUrl) {
         OSS ossClient = new OSSClientBuilder().build(endpoint, accessKeyId, accessKeySecret);
         try {
             // 从 OSS 下载文件到本地
             File file = new File(backupUrl);
             String fileName = file.getName();
-            ossClient.getObject(new GetObjectRequest(bucketName, fileName), new File(originalUrl));
-            System.out.println("图片恢复成功，路径：" + originalUrl);
+            ossClient.getObject(new GetObjectRequest(bucketName, fileName), new File(localDir));
+            System.out.println("图片恢复成功，路径：" + localDir);
         } catch (Exception e) {
             System.err.println("图片恢复失败：" + e.getMessage());
         } finally {

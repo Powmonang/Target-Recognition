@@ -1,10 +1,11 @@
 package com.defectscan.service;
 
-import com.defectscan.dto.ImgPageQueryDTO;
-import com.defectscan.dto.UrlRequestDTO;
+import com.defectscan.vo.ImgPageQueryVO;
 import com.defectscan.entity.Img;
 import com.defectscan.entity.ReturnDetectData;
 import com.defectscan.result.PageResult;
+
+import java.util.List;
 
 
 public interface ImgService {
@@ -19,21 +20,22 @@ public interface ImgService {
      * @param request
      * @return
      */
-    public ReturnDetectData detectImages(UrlRequestDTO request);
+    public ReturnDetectData detectImages(List<String> request);
 
     /**
      * 进行分页查询
      * @param imgPageQueryDTO
      * @return
      */
-    PageResult pageQuery(int page, int pageSize, ImgPageQueryDTO imgPageQueryDTO);
+    PageResult pageQuery(int page, int pageSize, ImgPageQueryVO imgPageQueryDTO);
 
     /**
      * 编辑图片
-     * @param img
+     * @param id
+     * @param mark
      * @return
      */
-    boolean updateImg(Img img);
+    boolean updateImg(int id, String mark);
 
     /**
      * 删除图片

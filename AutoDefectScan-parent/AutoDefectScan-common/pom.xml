@@ -26,9 +26,30 @@
             <version>4.0.1</version> <!-- 或者选择其他版本 -->
             <scope>provided</scope>
         </dependency>
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-test</artifactId>
+            <version>6.1.14</version>
+        </dependency>
 
-
-
+        <!-- junrar 依赖，用于处理 RAR 压缩文件 -->
+        <dependency>
+            <groupId>com.github.junrar</groupId>
+            <artifactId>junrar</artifactId>
+            <version>7.4.0</version>
+        </dependency>
+        <!-- SevenZipJBinding 核心依赖，用于处理 7z 压缩文件 -->
+        <dependency>
+            <groupId>net.sf.sevenzipjbinding</groupId>
+            <artifactId>sevenzipjbinding</artifactId>
+            <version>16.02-2.01</version>
+        </dependency>
+        <!-- SevenZipJBinding 全平台依赖，提供跨平台支持 -->
+        <dependency>
+            <groupId>net.sf.sevenzipjbinding</groupId>
+            <artifactId>sevenzipjbinding-all-platforms</artifactId>
+            <version>16.02-2.01</version>
+        </dependency>
 
 
     </dependencies>

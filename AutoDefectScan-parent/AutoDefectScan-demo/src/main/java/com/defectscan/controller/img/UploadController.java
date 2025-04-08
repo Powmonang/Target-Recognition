@@ -33,8 +33,6 @@ import static com.google.common.io.Files.getFileExtension;
 @Slf4j
 public class UploadController {
 
-    // 获取当前工作目录（应用程序根目录）
-    private final String currentDir = System.getProperty("user.dir");
 
 
     @Value("${demo.controller.img.tempDir}")
@@ -64,38 +62,38 @@ public class UploadController {
     //@Log
     @PostMapping("/images_local")
     @ApiOperation("上传图片(本地存储)")
-    public Result<Map<String,String>> uploadImages_local(@RequestParam("images") List<MultipartFile> images) throws IOException {
+    public Result<List<Map.Entry<String,String>>> uploadImages_local(@RequestParam("images") List<MultipartFile> images) throws IOException {
         log.info("开始上传图片(本地), 上传的图片数量: {}", images.size());
+        // list存储了所有照片的名称与路径
+        List<Map.Entry<String,String>> list = new ArrayList<>();
         if (images == null || images.isEmpty()) {
             log.info("图像上传为空");
             return Result.error("图像上传为空");
         } else {
-            Map<String,String> map = new HashMap<>();
             // 遍历所有上传的图片
             for (MultipartFile image : images) {
                 try {
                     // 将图片存入本地临时文件夹
-                    Map.Entry<String, Path> pair = uploadImgTool.uploadImgToTemp(image, tempDir);
-                    map.put(pair.getKey(), pair.getValue().toString());
+                    Map.Entry<String, String> pair = uploadImgTool.uploadImgToTemp(image, tempDir);
+                    list.add(pair);
                     log.info("图片上传本地成功，临时存储地址为：{}", pair.getValue());
                 } catch (Exception e) {
                     log.info("图片上传失败，{}", e.toString());
                     return Result.error("图片上传失败：" + e);
                 }
             }
-            // 返回所有上传文件的路径
-            return Result.success(map);
         }
+        return Result.success(list);
     }
 
     //@Log
     @PostMapping("/sureUpload")
     public Result sureUpLoad(@RequestBody ImgMapRequestDTO requestDTO) throws IOException {
-        for (String key : requestDTO.getMap().keySet()) {
-            // 文件临时保存路径
-            String originalFileName = key;
-            // 文件原始名
-            String tempUrl = requestDTO.getMap().get(key);
+        for (Map.Entry<String, String> entry : requestDTO.getMap().entrySet()) {
+            // 文件名
+            String originalFileName = entry.getKey();
+            // 文件临时路劲
+            String tempUrl = entry.getValue();
             log.info("确认上传图片:{},保存路径：{}" ,originalFileName,tempUrl);
             // 定义源图片
             Img image = new Img();
@@ -108,12 +106,12 @@ public class UploadController {
 
                 // 设置图片名称、本地路径
                 image.setImageName(originalFileName);
-                image.setOriginalLocalUrl(imgTargetUrl);
+                image.setLocalDir(imgTargetUrl);
 
                 // 批量写入数据库
                 imgService.addImg(image);
-                // 修改map的路劲值
-                requestDTO.getMap().replace(key,imgTargetUrl);
+                // 修改list的路劲值
+                entry.setValue(imgTargetUrl);
 
             } catch (IOException e) {
                 log.error("上传失败: " + e);
@@ -124,8 +122,12 @@ public class UploadController {
     }
 
 
-
-
+    /**
+     * 弃用
+     * @param images
+     * @return
+     * @throws IOException
+     */
     // 图片批量上传接口(云服务器存储)
     //@Log
     @PostMapping("/images_aliyun")
@@ -137,9 +139,9 @@ public class UploadController {
             // 遍历上传每个图片
             for (MultipartFile image : images) {
                 //先上传临时文件夹
-                Map.Entry<String, Path> pair = uploadImgTool.uploadImgToTemp(image, tempDir);
+                Map.Entry<String, String> pair = uploadImgTool.uploadImgToTemp(image, tempDir);
                 //截取至本地文件夹
-                String imgTargetUrl = uploadImgTool.uploadImgToLocal(pair.getValue().toString(),tempDir,targetDir);
+                String imgTargetUrl = uploadImgTool.uploadImgToLocal(pair.getValue(),tempDir,targetDir);
 
                 // 使用 Paths.get() 获取 Path 对象
                 Path path = Paths.get(imgTargetUrl);
@@ -160,8 +162,8 @@ public class UploadController {
                 // 将图片上传数据库
                 // 定义源图片
                 Img img = new Img();
-                img.setOriginalLocalUrl(imgTargetUrl);
-                img.setOriginalBackupUrl(url);
+                img.setLocalDir(imgTargetUrl);
+                img.setIsBackup(url);
                 img.setImageName(originalFileName);
                 imgService.addImg(img);  // 批量写入数据库
             }
@@ -171,8 +173,5 @@ public class UploadController {
             return Result.error(e.getMessage());
         }
     }
-
-
-
 
 }

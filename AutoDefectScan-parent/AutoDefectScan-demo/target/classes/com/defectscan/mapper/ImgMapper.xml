@@ -4,18 +4,15 @@
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.defectscan.mapper.ImgMapper">
 
-<!--    数据库参数与Img实体类参数映射-->
+    <!--    数据库参数与Img实体类参数映射-->
     <resultMap id="ImgResultMap" type="com.defectscan.entity.Img">
         <id property="id" column="id"/>
         <result property="imageName" column="imageName"/>
-        <result property="originalLocalUrl" column="originalLocalUrl"/>
-        <result property="originalBackupUrl" column="originalBackupUrl"/>
-        <result property="detectLocalUrl" column="detectLocalUrl"/>
-        <result property="detectBackupUrl" column="detectBackupUrl"/>
+        <result property="localDir" column="localDir"/>
+        <result property="backupUrl" column="backupUrl"/>
         <result property="detectTime" column="detectTime"/>
-        <result property="defectTagId" column="defectTagId"/>
         <result property="defectCount" column="defectCount"/>
-        <result property="confidenceLevel" column="confidenceLevel"/>
+        <result property="defectTypeId" column="defectTypeId"/>
         <result property="createTime" column="createTime"/>
         <result property="updateTime" column="updateTime"/>
         <result property="createUser" column="createUser"/>
@@ -26,21 +23,34 @@
         <result property="isBackup" column="isBackup"/>
     </resultMap>
 
+
+    <!--    数据库参数与ImgResultMap实体类参数映射-->
+    <resultMap id="ReturnPageImgResultMap" type="com.defectscan.vo.ReturnPageImgVO">
+        <id property="id" column="id"/>
+        <result property="imageName" column="imageName"/>
+        <result property="aliyunUrl" column="aliyunUrl"/>
+        <result property="detectTime" column="detectTime"/>
+        <result property="defectCount" column="defectCount"/>
+        <result property="defectType" column="defectTypeId"/>
+        <result property="createTime" column="createTime"/>
+        <result property="updateTime" column="updateTime"/>
+        <result property="createUser" column="createUser"/>
+        <result property="updateUser" column="updateUser"/>
+        <result property="mark" column="mark"/>
+    </resultMap>
+
 <!--    添加图片信息-->
     <insert id="addImg" parameterType="com.defectscan.entity.Img">
         INSERT INTO imgs (
-            imageName, originalLocalUrl, originalBackupUrl,
-            detectLocalUrl, detectBackupUrl, detectTime,
-            defectTagId, defectCount, confidenceLevel,
-            createTime, updateTime, createUser,
+            imageName, localDir, aliyunUrl, backupUrl, detectTime,
+            defectCount, defectTypeId, createTime, updateTime, createUser,
             updateUser, mark, isOpe, isShow, isBackup
         )
         VALUES (
-                   #{imageName}, #{originalLocalUrl}, #{originalBackupUrl},
-                   #{detectLocalUrl}, #{detectBackupUrl}, #{detectTime},
-                   #{defectTagId}, #{defectCount}, #{confidenceLevel},
-                   #{createTime}, #{updateTime}, #{createUser},
-                   #{updateUser}, #{mark}, #{isOpe}, #{isShow}, #{isBackup}
+                   #{imageName}, #{localDir}, #{aliyunUrl},#{backupUrl},
+                   #{detectTime}, #{defectCount},#{defectTypeId}, #{createTime},
+                   #{updateTime}, #{createUser},#{updateUser},
+                   #{mark}, #{isOpe}, #{isShow}, #{isBackup}
                );
     </insert>
 
@@ -49,23 +59,14 @@
     <update id="updateImgDetect" parameterType="com.defectscan.entity.Img">
         UPDATE imgs
         <trim prefix="SET" suffixOverrides=",">
-            <if test="detectLocalUrl != null and detectLocalUrl != ''">
-                detectLocalUrl = #{detectLocalUrl},
-            </if>
-            <if test="detectBackupUrl != null and detectBackupUrl != ''">
-                detectBackupUrl = #{detectBackupUrl},
-            </if>
             <if test="detectTime != null and detectTime != ''">
                 detectTime = #{detectTime},
-            </if>
-            <if test="defectTagId != null and defectTagId != ''">
-                defectTagId = #{defectTagId},
             </if>
             <if test="defectCount != null and defectCount != ''">
                 defectCount = #{defectCount},
             </if>
-            <if test="confidenceLevel != null and confidenceLevel != ''">
-                confidenceLevel = #{confidenceLevel},
+            <if test="defectTypeId != null and defectTypeId != ''">
+                defectTypeId = #{defectTypeId},
             </if>
             <if test="updateTime != null">
                 updateTime = #{updateTime},
@@ -76,27 +77,21 @@
             <if test="isDetect != null and isDetect != ''">
                 isDetect = #{isDetect},
             </if>
-            <if test="isOpe != null and isOpe != ''">
-                isOpe = #{isOpe}
-            </if>
-            <if test="isBackup != null and isBackup != ''">
-                isBackup = #{isBackup}
-            </if>
         </trim>
-        WHERE id = #{id} AND imageName = #{imageName}
+        WHERE id = #{id}
     </update>
 
 
 <!--    根据url查询图片数据-->
-    <select id="selectImgByUrl" parameterType="string" resultType="com.defectscan.entity.Img">
-        SELECT *
+    <select id="selectAiDetectDTOByUrl" parameterType="string" resultType="com.defectscan.dto.AiDetectDTO">
+        SELECT id, aliyunUrl
         FROM imgs
         <where>
-            <if test="originalLocalUrl != null and originalLocalUrl != ''">
-                and originalLocalUrl = #{url}
+            <if test="localDir != null and localDir != ''">
+                localDir = #{localDir}
             </if>
-            <if test="originalBackupUrl != null and originalBackupUrl != ''">
-                or originalBackupUrl = #{url}
+            <if test="aliyunUrl != null and aliyunUrl != ''">
+                or aliyunUrl = #{aliyunUrl}
             </if>
         </where>
     </select>
@@ -104,79 +99,54 @@
 
 <!--    图片分页查询-->
 <!--    查询总数据量-->
-    <select id="pageSum" parameterType="com.defectscan.dto.ImgPageQueryDTO" resultType="long">
+    <select id="pageSum" parameterType="com.defectscan.vo.ImgPageQueryVO" resultType="long">
         select count(*) from imgs
         <where>
-            <if test="defectTagId != null and defectTagId != ''">
-                -- 假设数据库中缺陷类型id也是以逗号分隔存储
-                AND FIND_IN_SET(defectTagId, #{defectTagId}) > 0
-            </if>
-            <if test="defectCount != null and defectCount != ''">
-                AND defectCount = #{defectCount}
-            </if>
-            <if test="confidenceLevel != null and confidenceLevel != ''">
-                AND confidenceLevel = #{confidenceLevel}
-            </if>
             <if test="start != null and start != '' and end != null and end != ''">
                 AND updateTime BETWEEN #{start} AND #{end}
             </if>
             <if test="createUser != null and createUser != ''">
                 AND createUser LIKE CONCAT('%', #{createUser}, '%')
             </if>
-            <if test="mark != null and mark != ''">
-                AND mark LIKE CONCAT('%', #{mark}, '%')
-            </if>
-            <if test="isDetect != null and isDetect != ''">
-                AND isDetect = #{isDetect}
-            </if>
-            <if test="isOpe != null and isOpe != ''">
-                AND isOpe = #{isOpe}
-            </if>
-            <if test="isBackup != null and isBackup != ''">
-                AND isBackup = #{isBackup}
+            <if test="defectType != null and defectType != ''">
+                AND FIND_IN_SET(#{defectType}, defectTypeId) > 0
             </if>
         </where>
     </select>
+
+
+
 <!--    查询当前页数据列表-->
-    <select id="pageQuery" resultMap="ImgResultMap">
-        select * from imgs
+    <select id="pageQuery" resultMap="ReturnPageImgResultMap">
+        select id, imageName,aliyunUrl,detectTime, defectCount,defectTypeId, createTime, updateTime, createUser, updateUser, mark
+        from imgs
         <where>
-            <if test="a.defectTagId != null and a.defectTagId != ''">
-                -- 假设数据库中缺陷类型id也是以逗号分隔存储
-                AND FIND_IN_SET(defectTagId, #{a.defectTagId}) > 0
-            </if>
-            <if test="a.defectCount != null and a.defectCount != ''">
-                AND defectCount = #{a.defectCount}
-            </if>
-            <if test="a.confidenceLevel != null and a.confidenceLevel != ''">
-                AND confidenceLevel = #{a.confidenceLevel}
-            </if>
             <if test="a.start != null and a.start != '' and a.end != null and a.end != ''">
                 AND updateTime BETWEEN #{a.start} AND #{a.end}
             </if>
             <if test="a.createUser != null and a.createUser != ''">
                 AND createUser LIKE CONCAT('%', #{a.createUser}, '%')
             </if>
-            <if test="a.mark != null and a.mark != ''">
-                AND mark LIKE CONCAT('%', #{a.mark}, '%')
-            </if>
-            <if test="a.isDetect != null and a.isDetect != ''">
-                AND isDetect = #{a.isDetect}
-            </if>
-            <if test="a.isOpe != null and a.isOpe != ''">
-                AND isOpe = #{a.isOpe}
-            </if>
-            <if test="a.isBackup != null and a.isBackup != ''">
-                AND isBackup = #{a.isBackup}
+            <if test="a.defectType != null and a.defectType != ''">
+                AND FIND_IN_SET(#{a.defectType}, defectTypeId) > 0
             </if>
         </where>
         limit #{startIndex}, #{pageSize}
     </select>
 
+
+
     <select id="findImgById" parameterType="java.lang.Long" resultType="com.defectscan.entity.Img">
         select * from imgs
         <where>
             id = #{id}
+        </where>
+    </select>
+
+    <select id="findImgByUsername" parameterType="string" resultType="com.defectscan.entity.Img">
+        select * from imgs
+        <where>
+            createUser = #{username}
         </where>
     </select>
 
@@ -194,29 +164,23 @@
             <if test="imageName != null and imageName != ''">
                 imageName = #{imageName},
             </if>
-            <if test="originalLocalUrl != null and originalLocalUrl != ''">
-                originalLocalUrl = #{originalLocalUrl},
+            <if test="localDir != null and localDir != ''">
+                localDir = #{localDir},
             </if>
-            <if test="originalBackupUrl != null and originalBackupUrl != ''">
-                originalBackupUrl = #{originalBackupUrl},
+            <if test="aliyunUrl != null and aliyunUrl != ''">
+                aliyunUrl = #{aliyunUrl},
             </if>
-            <if test="detectLocalUrl != null and detectLocalUrl != ''">
-                detectLocalUrl = #{detectLocalUrl},
-            </if>
-            <if test="detectBackupUrl != null and detectBackupUrl != ''">
-                detectBackupUrl = #{detectBackupUrl},
+            <if test="backupUrl != null and backupUrl != ''">
+                backupUrl = #{backupUrl},
             </if>
             <if test="detectTime != null and detectTime != ''">
                 detectTime = #{detectTime},
             </if>
-            <if test="defectTagId != null and defectTagId != ''">
-                defectTagId = #{defectTagId},
-            </if>
             <if test="defectCount != null and defectCount != ''">
                 defectCount = #{defectCount},
             </if>
-            <if test="confidenceLevel != null and confidenceLevel != ''">
-                confidenceLevel = #{confidenceLevel},
+            <if test="defectTypeId != null and defectTypeId != ''">
+                defectTypeId = #{defectTypeId},
             </if>
             <if test="createTime != null">
                 createTime = #{createTime},
@@ -253,7 +217,7 @@
     <delete id="deleteImg" parameterType="com.defectscan.entity.Img">
         delete from imgs
         <where>
-            id = #{id}
+            id = #{a.id}
         </where>
     </delete>
 
